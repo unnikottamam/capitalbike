@@ -140,14 +140,10 @@ add_action( 'widgets_init', 'capitalbike_widgets_init' );
  * Enqueue scripts and styles.
  */
 function capitalbike_scripts() {
-	wp_enqueue_style( 'capitalbike-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_enqueue_style( 'capitalbike-style', get_template_directory_uri() . '/dist/css/app.min.css', array(), _S_VERSION );
 	wp_style_add_data( 'capitalbike-style', 'rtl', 'replace' );
 
-	wp_enqueue_script( 'capitalbike-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
-
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+	wp_enqueue_script( 'capitalbike-navigation', get_template_directory_uri() . '/dist/js/app.js', array(), _S_VERSION, true );
 }
 add_action( 'wp_enqueue_scripts', 'capitalbike_scripts' );
 

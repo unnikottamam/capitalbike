@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+// Default Variables
+$slick-opacity-not-active: 0.75 !default;
+
+/* Slider */
+.slick-list {
+  .slick-loading & {
+    background: $white;
+  }
+}
+
+/* Arrows */
+.slick-prev,
+.slick-next {
+  position: absolute;
+  display: block;
+  height: 2rem;
+  width: 2rem;
+  line-height: 1;
+  font-size: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-image: url("data:image/svg+xml,<svg viewBox='0 0 16 16' fill='#{svg-color($white)}' xmlns='http://www.w3.org/2000/svg'><path d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/></svg>");
+  opacity: $slick-opacity-not-active;
+  &:hover,
+  &:focus {
+    opacity: 1;
+    outline: none;
+    background-color: transparent;
+  }
+  &.slick-disabled:before {
+    opacity: $slick-opacity-not-active;
+  }
+}
+
+.slick-prev {
+  left: 0;
+}
+
+.slick-next {
+  right: 0;
+  transform: translateY(-50%) rotate(180deg);
+}

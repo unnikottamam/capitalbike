@@ -1,0 +1,66 @@
+$primary: #f7bf15;
+$secondary: #f0585a;
+$dark: #042437;
+$white: #fff !default;
+$light: #f8ebe0;
+$black: #042437 !default;
+$black_90: rgba($black, 0.9);
+$black_15: rgba($black, 0.15);
+$black_20: rgba($black, 0.2);
+
+$font-size-base: 1rem !default;
+$font-size-sm: $font-size-base * 0.875 !default;
+$font-family-sans-serif: "Roboto", sans-serif;
+$headings-font-weight: 700 !default;
+$headings-font-family: "Roboto";
+$headings-color: $dark;
+$headings-margin-bottom: 1rem;
+$h1-font-size: $font-size-base * 3.75 !default;
+$h2-font-size: $font-size-base * 2.5 !default;
+$h3-font-size: $font-size-base * 1.875 !default;
+$h4-font-size: $font-size-base * 1.75 !default;
+
+$btn-padding-y: 0.625rem;
+$btn-padding-x: 1.75rem;
+$btn-font-weight: 500;
+$btn-font-size: 1rem;
+$btn-font-family: "Roboto", sans-serif;
+$btn-line-height: 1;
+$border-radius: 3rem;
+$btn-border-width: 2px;
+$btn-padding-y-sm: 0.5rem !default;
+$btn-padding-x-sm: 1.25rem !default;
+$btn-border-radius-sm: 3rem !default;
+$btn-focus-width: 0;
+
+$link-color: inherit;
+$link-hover-color: $primary;
+$link-hover-decoration: none;
+
+$input-border-color: $black_15;
+$input-border-radius: 0.15rem;
+$input-border-width: 1px;
+$input-padding-x: 0.9375rem;
+$input-focus-box-shadow: none;
+$input-btn-focus-box-shadow: none;
+$input-focus-border-color: $primary;
+$input-height: 2.8rem;
+
+// Spacers
+$spacer: 1rem;
+$spacers: (
+  5: (
+    $spacer * 3.375
+  ),
+  6: (
+    $spacer * 4
+  )
+);
+
+// Container Max Widths
+$container-max-sizes: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px
+) !default;

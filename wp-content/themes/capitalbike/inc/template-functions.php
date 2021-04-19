@@ -35,3 +35,18 @@ function capitalbike_pingback_header() {
 	}
 }
 add_action( 'wp_head', 'capitalbike_pingback_header' );
+
+if (function_exists('acf_add_options_page')) {
+  acf_add_options_page();
+}
+
+// Change Menu Active Clas
+function change_menu_classes($css_classes)
+{
+  $css_classes = str_replace("current-menu-item", "active", $css_classes);
+  $css_classes = str_replace("current_page_item", "active", $css_classes);
+  $css_classes = str_replace("current-menu-parent", "active", $css_classes);
+  $css_classes = str_replace("current-menu-ancestor", "active", $css_classes);
+  return $css_classes;
+}
+add_filter('nav_menu_css_class', 'change_menu_classes');

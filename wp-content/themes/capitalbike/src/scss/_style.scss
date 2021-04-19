@@ -1,0 +1,119 @@
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a,
+img,
+button,
+button svg,
+a::before,
+a::after,
+a svg,
+a span,
+a strong {
+  @include transition;
+}
+
+a:focus {
+  outline: none;
+}
+button:focus {
+  outline: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.btn {
+  &-default {
+    color: inherit;
+    &:hover {
+      background-color: $white;
+      color: $dark;
+    }
+  }
+}
+
+.ctalist {
+  list-style: none;
+  padding: 1.15rem 0 0;
+  margin: 0;
+  li {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0.25rem 0.5rem;
+    &:first-child {
+      margin-left: 0;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.text {
+  &-white {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: $white;
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .pb-5,
+  .py-5 {
+    padding-bottom: 5rem !important;
+  }
+
+  .pt-5,
+  .py-5 {
+    padding-top: 5rem !important;
+  }
+
+  .pb-6,
+  .py-6 {
+    padding-bottom: 6.25rem !important;
+  }
+
+  .pt-6,
+  .py-6 {
+    padding-top: 6.25rem !important;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .pb-5,
+  .py-5 {
+    padding-bottom: 6.25rem !important;
+  }
+
+  .pt-5,
+  .py-5 {
+    padding-top: 6.25rem !important;
+  }
+
+  .pb-6,
+  .py-6 {
+    padding-bottom: 8rem !important;
+  }
+
+  .pt-6,
+  .py-6 {
+    padding-top: 8rem !important;
+  }
+}
