@@ -109,11 +109,23 @@ button:focus {
 
   .pb-6,
   .py-6 {
-    padding-bottom: 8rem !important;
+    padding-bottom: 7rem !important;
   }
 
   .pt-6,
   .py-6 {
-    padding-top: 8rem !important;
+    padding-top: 7rem !important;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .pb-6,
+  .py-6 {
+    padding-bottom: 8.5rem !important;
+  }
+
+  .pt-6,
+  .py-6 {
+    padding-top: 8.5rem !important;
   }
 }

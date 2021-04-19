@@ -44,13 +44,16 @@
 }
 
 .eventsec {
-  &__left {
+  &__leftinn {
     max-width: 45rem;
     width: 100%;
     display: inline-block;
+    height: 100%;
+    position: relative;
   }
   &__slider {
-    margin: calc(-4% - 3rem) 0 0 calc(-3% - 2rem);
+    z-index: 3;
+    margin: calc(-4% - 3rem) 0 0 calc(-5% - 2rem);
   }
   &__slideimg {
     transform: rotate(-45deg);
@@ -66,14 +69,56 @@
       width: 100%;
     }
   }
+  .slick-dots {
+    position: absolute;
+    right: -2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    li {
+      display: block;
+      margin: 0.35rem 0;
+    }
+  }
 }
 
-@include media-breakpoint-up(md) {
+.clouddesign {
+  position: relative;
+  padding: 22rem 0;
+  margin-top: -36%;
+  z-index: 3;
+  &__cont {
+    max-width: 40rem;
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    margin: 0 auto;
+  }
+  &__img {
+    position: absolute;
+    left: 50%;
+    height: 100%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    img {
+      max-width: none;
+      width: calc(100% + 5rem);
+      margin: 0 -2.5rem;
+      max-height: 60rem;
+      height: 100%;
+      -o-object-fit: contain;
+      object-fit: contain;
+    }
+  }
+}
+
+@include media-breakpoint-only(md) {
   .eventsec {
-    &__right {
-      padding-right: calc(
-        100% - ((100% + #{map-get($container-max-sizes, md)}) / 2) + 15px
-      );
+    &__right,
+    &__left {
+      width: #{map-get($container-max-sizes, md)};
     }
   }
 }
@@ -85,6 +130,21 @@
         100% - ((100% + #{map-get($container-max-sizes, lg)}) / 2) + 15px
       );
     }
+    &__left {
+      padding-bottom: 30%;
+    }
+    &__leftinn {
+      &:before {
+        content: "";
+        position: absolute;
+        right: calc(50% + 5%);
+        width: 50vw;
+        height: calc(100% + 30rem);
+        top: 0;
+        background: $dark;
+        z-index: 0;
+      }
+    }
   }
 }
 
@@ -95,5 +155,12 @@
         100% - ((100% + #{map-get($container-max-sizes, xl)}) / 2) + 15px
       );
     }
+    &__left {
+      padding-bottom: 30rem;
+    }
+  }
+
+  .clouddesign {
+    margin-top: -30rem;
   }
 }

@@ -28,7 +28,7 @@ $slick-opacity-not-active: 0.75 !default;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
-  background-image: url("data:image/svg+xml,<svg viewBox='0 0 16 16' fill='#{svg-color($white)}' xmlns='http://www.w3.org/2000/svg'><path d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/></svg>");
+  background-image: url("data:image/svg+xml,<svg viewBox='0 0 16 16' fill='#{svg-color($black)}' xmlns='http://www.w3.org/2000/svg'><path d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/></svg>");
   opacity: $slick-opacity-not-active;
   &:hover,
   &:focus {
@@ -48,4 +48,32 @@ $slick-opacity-not-active: 0.75 !default;
 .slick-next {
   right: 0;
   transform: translateY(-50%) rotate(180deg);
+}
+
+.slick-dots {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  text-align: center;
+  li {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0.35rem;
+    button {
+      font-size: 0;
+      text-indent: -10rem;
+      background: $white;
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: 50%;
+      border: 1px solid $grey;
+      outline: none;
+    }
+    &.slick-active {
+      button {
+        background: $secondary;
+      }
+    }
+  }
 }

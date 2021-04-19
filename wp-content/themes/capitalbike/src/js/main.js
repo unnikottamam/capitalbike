@@ -21,4 +21,19 @@ $(document).ready(function () {
     dots: true,
     swipe: false
   });
+
+  $(".brands__slider").slick({
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    dots: false,
+    arrows: true,
+    responsive: [
+      {
+        breakpoint: 540,
+        settings: {
+          slidesToShow: 2
+        }
+      }
+    ]
+  });
 });
