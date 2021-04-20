@@ -105,6 +105,23 @@ textarea.form-control {
   .py-6 {
     padding-top: 6.25rem !important;
   }
+
+  .h1,
+  h1 {
+    font-size: $font-size-base * 3.75;
+  }
+  .h2,
+  h2 {
+    font-size: $font-size-base * 2.5;
+  }
+  h3,
+  .h3 {
+    font-size: $font-size-base * 1.875;
+  }
+  .h4,
+  h4 {
+    font-size: $font-size-base * 1.75;
+  }
 }
 
 @include media-breakpoint-up(lg) {

@@ -3,30 +3,18 @@
   position: relative;
   p {
     max-width: 26rem;
+    margin-left: auto;
+    margin-right: auto;
   }
   &__row {
     padding-top: 7rem;
-    padding-bottom: 15rem;
+    padding-bottom: 8rem;
     position: relative;
     z-index: 3;
     align-items: center;
   }
   &-full {
-    min-height: calc(100vh - 8.875rem);
-  }
-  &__side {
-    position: absolute;
-    width: 46%;
-    height: 100%;
-    max-height: 40rem;
-    background-image: url(../images/capital-bike.png);
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    background-position: 112% center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    z-index: 2;
+    min-height: 100vh;
   }
   &:before {
     position: absolute;
@@ -44,48 +32,39 @@
 }
 
 .eventsec {
+  &__left {
+    padding: 4rem 15px;
+  }
   &__leftinn {
-    max-width: 45rem;
+    max-width: 26rem;
     width: 100%;
-    display: inline-block;
+    display: block;
     height: 100%;
     position: relative;
+    margin: 0 auto;
   }
   &__slider {
     z-index: 3;
-    margin: calc(-4% - 3rem) 0 0 calc(-5% - 2rem);
   }
   &__slideimg {
-    transform: rotate(-45deg);
     overflow: hidden;
     border-radius: 3rem;
-    margin: 16%;
-    max-width: 68%;
     img {
-      transform: rotate(45deg) scale(1.4);
-      overflow: hidden;
       -o-object-fit: cover;
       object-fit: cover;
       width: 100%;
     }
   }
   .slick-dots {
-    position: absolute;
-    right: -2rem;
-    top: 50%;
-    transform: translateY(-50%);
-    li {
-      display: block;
-      margin: 0.35rem 0;
-    }
+    margin: 1rem 0 0;
   }
 }
 
 .clouddesign {
   position: relative;
-  padding: 22rem 0;
-  margin-top: -36%;
   z-index: 3;
+  padding: 10rem 0;
+  margin-top: -8rem;
   &__cont {
     max-width: 40rem;
     position: relative;
@@ -108,8 +87,8 @@
       margin: 0 -2.5rem;
       max-height: 60rem;
       height: 100%;
-      -o-object-fit: contain;
-      object-fit: contain;
+      -o-object-fit: cover;
+      object-fit: cover;
     }
   }
 }
@@ -122,9 +101,6 @@
   img {
     display: block;
     margin: 0 auto;
-  }
-  .slick-next {
-    right: -8px;
   }
   .slick-prev {
     left: -8px;
@@ -164,14 +140,24 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right center;
+    opacity: 0.15;
   }
 }
 
 .instasec {
+  h3 {
+    margin-top: 0.35rem;
+    a {
+      &:hover {
+        color: $secondary;
+      }
+    }
+  }
   .container-fluid {
     width: calc(100% - 2px);
+    padding: 0;
   }
-  .col {
+  &__slide {
     padding: 1rem 1px 2px;
     a {
       display: block;
@@ -187,10 +173,31 @@
       display: block;
     }
   }
+  .slick {
+    &-prev,
+    &-next {
+      background-color: $white;
+      background-size: 1.15rem;
+      border: 2px solid $primary;
+      border-radius: 5rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      &:hover,
+      &:focus {
+        background-color: $white;
+      }
+    }
+    &-prev {
+      left: 4%;
+    }
+    &-next {
+      right: 4%;
+    }
+  }
 }
 
 .footer {
-  padding: 5rem 0 3rem;
+  padding: 2rem 0 1rem;
   position: relative;
   z-index: 5;
   margin: 1rem 0 0;
@@ -198,10 +205,11 @@
     content: "";
     width: 100%;
     position: absolute;
-    height: 5rem;
+    height: 4rem;
     background-image: url(../images/footer-overlay.svg);
     background-repeat: repeat-x;
     background-position: top;
+    background-size: 44rem;
     display: block;
     left: 0;
     top: -3rem;
@@ -221,7 +229,15 @@
   }
   &__btm {
     text-align: center;
-    padding: 0.85rem 15px;
+    padding: 0.75rem 15px;
+    font-weight: 500;
+    font-family: "Recoleta", sans-serif;
+    a {
+      &:hover {
+        color: inherit;
+        opacity: 0.5;
+      }
+    }
     p {
       margin: 0;
       font-size: 14px;
@@ -229,7 +245,8 @@
   }
 }
 
-.contactsec {
+.contactsec,
+.mainmenu__widget {
   h3 {
     margin-bottom: 1.25rem;
   }
@@ -240,6 +257,11 @@
   }
   li {
     padding: 0.2rem 0;
+    a {
+      &:hover {
+        color: $secondary;
+      }
+    }
   }
 }
 
@@ -264,15 +286,31 @@
     img {
       width: 100%;
       height: 100%;
+      -o-object-fit: cover;
       object-fit: cover;
     }
   }
   &__row {
-    padding: 15rem 0 7rem;
+    padding-top: 7rem;
+    padding-bottom: 8rem;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
     text-align: center;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .eventsec {
+    &__right {
+      text-align: center;
+      padding-bottom: 12rem;
+      > * {
+        max-width: 26rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
   }
 }
 
@@ -281,21 +319,77 @@
     &__right,
     &__left {
       width: #{map-get($container-max-sizes, md)};
+      margin: 0 auto;
+    }
+  }
+
+  .clouddesign {
+    padding: 14rem 0;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .banner {
+    &__row {
+      padding-top: 12rem;
+      padding-bottom: 15rem;
+    }
+  }
+  .newsletter {
+    &:before {
+      opacity: 1;
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, $dark 50%, transparent, transparent);
     }
   }
 }
 
 @include media-breakpoint-up(lg) {
+  .banner {
+    p {
+      margin-left: 0;
+      margin-right: 0;
+    }
+    &__side {
+      position: absolute;
+      width: 46%;
+      max-height: 40rem;
+      background-image: url(../images/capital-bike.png);
+      right: 0;
+      height: calc(100vh - 4rem);
+      top: calc(50% + 3rem);
+      transform: translateY(-50%);
+      background-position: 112% center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      z-index: 2;
+    }
+  }
+
   .eventsec {
     &__right {
       padding-right: calc(
         100% - ((100% + #{map-get($container-max-sizes, lg)}) / 2) + 15px
       );
+      padding-bottom: 0;
+      margin-top: 3%;
+      text-align: left;
     }
     &__left {
       padding-bottom: 30%;
+      padding-top: 0;
     }
     &__leftinn {
+      max-width: 45rem;
+      margin: 0;
+      display: inline-block;
       &:before {
         content: "";
         position: absolute;
@@ -306,6 +400,74 @@
         background: $dark;
         z-index: 0;
       }
+    }
+    &__slider {
+      margin: calc(-4% - 3rem) 0 0 calc(-5% - 2rem);
+    }
+    &__slideimg {
+      transform: rotate(-45deg);
+      overflow: hidden;
+      border-radius: 3rem;
+      margin: 16%;
+      max-width: 68%;
+      img {
+        transform: rotate(45deg) scale(1.4);
+      }
+    }
+    .slick-dots {
+      margin: 0;
+      position: absolute;
+      right: -2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      li {
+        display: block;
+        margin: 0.35rem 0;
+      }
+    }
+  }
+
+  .newsletter {
+    &:after {
+      background: linear-gradient(45deg, $dark 38%, transparent, transparent);
+    }
+  }
+
+  .instasec {
+    .slick {
+      &-prev,
+      &-next {
+        border-width: 3px;
+        width: 3rem;
+        height: 3rem;
+        background-size: 1.35rem;
+      }
+    }
+  }
+
+  .clouddesign {
+    padding: 22rem 0;
+    margin-top: -36%;
+    &__img {
+      img {
+        -o-object-fit: contain;
+        object-fit: contain;
+      }
+    }
+  }
+
+  .footer {
+    padding: 5rem 0 3rem;
+    &:before {
+      height: 5rem;
+      background-size: auto;
+    }
+  }
+
+  .pagebanner {
+    &__row {
+      padding-top: 10rem;
+      padding-bottom: 12rem;
     }
   }
 }

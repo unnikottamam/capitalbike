@@ -1,7 +1,7 @@
 $(document).ready(function () {
-  $(".header__menutoggle").on("click", function (e) {
+  $(".header__toggle").on("click", function (e) {
     e.preventDefault();
-    $(".header, body, .header__menutoggle").toggleClass("menuactive");
+    $("body, .header, .mainmenu, .header__toggle").toggleClass("menuactive");
   });
   $(".scroll-down").on("click", function (e) {
     e.preventDefault();
@@ -28,6 +28,27 @@ $(document).ready(function () {
     dots: false,
     arrows: true,
     responsive: [
+      {
+        breakpoint: 540,
+        settings: {
+          slidesToShow: 2
+        }
+      }
+    ]
+  });
+
+  $(".instasec__slider").slick({
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    dots: false,
+    arrows: true,
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 3
+        }
+      },
       {
         breakpoint: 540,
         settings: {

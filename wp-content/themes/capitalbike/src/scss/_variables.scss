@@ -11,21 +11,21 @@ $black_20: rgba($black, 0.2);
 
 $font-size-base: 1rem !default;
 $font-size-sm: $font-size-base * 0.875 !default;
-$font-family-sans-serif: "Roboto", sans-serif;
-$headings-font-weight: 700 !default;
-$headings-font-family: "Roboto";
+$font-family-sans-serif: "Pangram", sans-serif;
+$headings-font-weight: 500 !default;
+$headings-font-family: "Recoleta", sans-serif;
 $headings-color: $dark;
 $headings-margin-bottom: 1rem;
-$h1-font-size: $font-size-base * 3.75 !default;
-$h2-font-size: $font-size-base * 2.5 !default;
-$h3-font-size: $font-size-base * 1.875 !default;
-$h4-font-size: $font-size-base * 1.75 !default;
+$h1-font-size: $font-size-base * 2.65 !default;
+$h2-font-size: $font-size-base * 2 !default;
+$h3-font-size: $font-size-base * 1.5 !default;
+$h4-font-size: $font-size-base * 1.25 !default;
 
 $btn-padding-y: 0.625rem;
 $btn-padding-x: 1.75rem;
 $btn-font-weight: 500;
 $btn-font-size: 1rem;
-$btn-font-family: "Roboto", sans-serif;
+$btn-font-family: "Recoleta", sans-serif;
 $btn-line-height: 1;
 $border-radius: 3rem;
 $btn-border-width: 2px;
@@ -52,11 +52,11 @@ $input-height: 3.2rem;
 $spacer: 1rem;
 $spacers: (
   5: (
-    $spacer * 3.375,
+    $spacer * 3.375
   ),
   6: (
-    $spacer * 4,
-  ),
+    $spacer * 4
+  )
 );
 
 // Container Max Widths
@@ -64,5 +64,5 @@ $container-max-sizes: (
   sm: 540px,
   md: 720px,
   lg: 960px,
-  xl: 1140px,
+  xl: 1140px
 ) !default;
