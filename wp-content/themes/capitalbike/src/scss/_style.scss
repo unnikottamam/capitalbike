@@ -40,7 +40,14 @@ button:focus {
     &:hover {
       background-color: $white;
       color: $dark;
+      border-color: $dark;
     }
+  }
+}
+
+.bg {
+  &-darklight {
+    background-color: $darklight;
   }
 }
 

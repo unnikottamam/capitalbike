@@ -212,7 +212,7 @@
     background-size: 44rem;
     display: block;
     left: 0;
-    top: -3rem;
+    top: -3.75rem;
   }
   &__logo {
     display: inline-block;
@@ -267,12 +267,14 @@
 
 .pagebanner {
   position: relative;
+  overflow: hidden;
   &__img {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    z-index: 1;
     &:before {
       content: "";
       position: absolute;
@@ -283,12 +285,21 @@
       background: $dark;
       opacity: 0.68;
     }
+    &.cloud2 {
+      &:before {
+        opacity: 0.32;
+      }
+    }
     img {
       width: 100%;
       height: 100%;
       -o-object-fit: cover;
       object-fit: cover;
     }
+  }
+  .container {
+    position: relative;
+    z-index: 5;
   }
   &__row {
     padding-top: 7rem;
@@ -297,6 +308,112 @@
     justify-content: center;
     min-height: 100vh;
     text-align: center;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: -0.25rem;
+    left: 0;
+    width: 100%;
+    z-index: 3;
+  }
+  &.cloud2 {
+    &:after {
+      height: 100%;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      background-position: bottom center;
+      background-image: url("data:image/svg+xml;charset=utf-8,<svg width='1366' height='323' fill='#{svg-color($darklight)}' xmlns='http://www.w3.org/2000/svg'><path d='M1366 0v322.5H0V1.65c15.88 11.3 32.52 22.57 45.47 37.23 25.73 29.14 37.13 82.65 71.65 107.54 31.07 22.42 79.79 13.05 116.96 31.36 34.17 16.84 60.23 63.72 98.77 76.6 36.06 12.06 81-10.75 120.25-2.56 37.21 7.77 71.59 47.42 111.14 51.37 37.87 3.79 78.06-28.22 117.6-28.22 39.54 0 79.72 32.02 117.6 28.22 39.55-3.96 73.92-43.6 111.13-51.37 39.25-8.19 84.2 14.62 120.25 2.56 38.54-12.88 64.61-59.76 98.77-76.6 37.18-18.31 85.9-8.94 116.97-31.36 34.51-24.89 45.91-78.39 71.64-107.54C1331.78 23.5 1349.43 11.86 1366 0z' /></svg>");
+    }
+  }
+}
+
+.contslider {
+  overflow: hidden;
+  &__slide {
+    img {
+      display: block;
+      width: 100%;
+      border-radius: 3rem;
+    }
+  }
+  .slick-dots {
+    margin: 1rem 0 0;
+  }
+}
+
+.teamarea {
+  position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -2.75rem;
+    width: 100%;
+    height: 3rem;
+    background-image: url("../images/teamarea-overlay.svg");
+    background-position: top center;
+    background-repeat: repeat-x;
+  }
+  &__slide {
+    padding: 0 2rem;
+  }
+  &__img {
+    position: relative;
+    overflow: hidden;
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+    img {
+      display: block;
+      margin: 0 auto 1.15rem;
+      position: relative;
+      z-index: 5;
+    }
+  }
+  .slick {
+    &-prev,
+    &-next {
+      background-image: url("data:image/svg+xml,<svg viewBox='0 0 16 16' fill='#{svg-color($white)}' xmlns='http://www.w3.org/2000/svg'><path d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/></svg>");
+    }
+    &-prev {
+      left: -15px;
+    }
+    &-next {
+      right: -15px;
+    }
+  }
+}
+
+.aboutsec {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 10%;
+  &:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-image: url("../images/about-us-overlay.svg");
+    background-position: bottom;
+    background-repeat: repeat-x;
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+  .container {
+    position: relative;
+    z-index: 5;
   }
 }
 
@@ -312,10 +429,37 @@
       }
     }
   }
+
+  .contslider {
+    color: $white;
+    &__leftinn {
+      &:before {
+        content: "";
+        bottom: 0;
+        left: -50vw;
+        width: 150vw;
+        background: $darklight;
+        height: 100%;
+        position: absolute;
+        z-index: -1;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-only(sm) {
+  .contslider {
+    &__right,
+    &__left {
+      width: #{map-get($container-max-sizes, sm)};
+      margin: 0 auto;
+    }
+  }
 }
 
 @include media-breakpoint-only(md) {
-  .eventsec {
+  .eventsec,
+  .contslider {
     &__right,
     &__left {
       width: #{map-get($container-max-sizes, md)};
@@ -461,6 +605,7 @@
     &:before {
       height: 5rem;
       background-size: auto;
+      top: -4.75rem;
     }
   }
 
@@ -468,6 +613,53 @@
     &__row {
       padding-top: 10rem;
       padding-bottom: 12rem;
+    }
+  }
+
+  .contslider {
+    &__slide {
+      img {
+        border-radius: 3rem 0 0 3rem;
+      }
+    }
+    &__rightinn {
+      max-width: 42rem;
+      padding-left: 4rem;
+    }
+    &__left {
+      padding-left: calc(
+        100% - ((100% + #{map-get($container-max-sizes, lg)}) / 2) + 15px
+      );
+    }
+    &__leftinn {
+      position: relative;
+      padding-bottom: 3rem;
+      margin-bottom: 1rem;
+      &:before {
+        content: "";
+        bottom: 0;
+        left: -50vw;
+        width: 150vw;
+        background: $darklight;
+        height: 200%;
+        position: absolute;
+        z-index: -1;
+      }
+    }
+    &__right {
+      padding-right: 0;
+    }
+
+    .slick-dots {
+      margin: 0;
+      position: absolute;
+      left: -2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      li {
+        display: block;
+        margin: 0.35rem 0;
+      }
     }
   }
 }
@@ -486,5 +678,13 @@
 
   .clouddesign {
     margin-top: -30rem;
+  }
+
+  .contslider {
+    &__left {
+      padding-left: calc(
+        100% - ((100% + #{map-get($container-max-sizes, xl)}) / 2) + 15px
+      );
+    }
   }
 }

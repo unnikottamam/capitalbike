@@ -18,8 +18,15 @@ $(document).ready(function () {
     slidesToScroll: 1,
     arrows: false,
     fade: true,
-    dots: true,
-    swipe: false
+    dots: true
+  });
+
+  $(".contslider__slider").slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    fade: true,
+    dots: true
   });
 
   $(".brands__slider").slick({
@@ -53,6 +60,27 @@ $(document).ready(function () {
         breakpoint: 540,
         settings: {
           slidesToShow: 2
+        }
+      }
+    ]
+  });
+
+  $(".teamarea__slider").slick({
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    dots: false,
+    arrows: true,
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 2
+        }
+      },
+      {
+        breakpoint: 540,
+        settings: {
+          slidesToShow: 1
         }
       }
     ]

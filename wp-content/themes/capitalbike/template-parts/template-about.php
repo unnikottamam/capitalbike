@@ -9,8 +9,8 @@
 
 get_header(); ?>
 
-<section class="pagebanner text-white">
-    <div class="pagebanner__img">
+<section class="pagebanner text-white cloud2">
+    <div class="pagebanner__img cloud2">
         <img src="<?php echo get_template_directory_uri(); ?>/images/contact-us.jpg" alt="contact-us">
     </div>
     <div class="container">
@@ -26,22 +26,27 @@ get_header(); ?>
         </div>
     </div>
 </section>
-<section class="contslider py-6">
+<section class="contslider">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col contslider__left">
-                <h2>Come for a bike ride</h2>
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-                    et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                    Lorem ipsum dolor sit amet, consetetur. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-                    ipsum dolor sit amet. Lorem ipsum dolor sit amen.</p>
+        <div class="row justify-content-between">
+            <div class="col-lg-6 contslider__left py-6">
+                <div class="contslider__leftinn text-white">
+                    <h2>Come for a bike ride</h2>
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+                        ut
+                        labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
+                        dolores
+                        et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                        Lorem ipsum dolor sit amet, consetetur. Stet clita kasd gubergren, no sea takimata sanctus est
+                        Lorem
+                        ipsum dolor sit amet. Lorem ipsum dolor sit amen.</p>
+                </div>
                 <ul class="ctalist">
                     <li><a href="#" class="btn btn-secondary">View Events</a></li>
                     <li><a href="#" class="btn btn-default">Contact Us</a></li>
                 </ul>
             </div>
-            <div class="col-lg-6 col-12 contslider__right">
+            <div class="col-lg-6 contslider__right pt-5">
                 <div class="contslider__rightinn">
                     <div class="contslider__slider">
                         <div class="contslider__slide">
@@ -56,16 +61,20 @@ get_header(); ?>
         </div>
     </div>
 </section>
-<section class="py-5 teamarea">
+<section class="py-5 commsec">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-6 col-lg-5 text-center">
+            <div class="col-md-8 col-lg-6 col-xl-5 text-center">
                 <h2>Meat the Team</h2>
                 <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
                     labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
                     et ea rebum.</p>
             </div>
         </div>
+    </div>
+</section>
+<section class="py-6 teamarea text-white bg-darklight">
+    <div class="container text-center">
         <div class="teamarea__slider">
             <div class="teamarea__slide">
                 <div class="teamarea__img">
@@ -115,7 +124,7 @@ get_header(); ?>
         </div>
     </div>
 </section>
-<section class="aboutsec text-white">
+<section class="aboutsec text-white bg-darklight">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10 col-lg-8 text-center">
