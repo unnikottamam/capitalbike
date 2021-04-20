@@ -74,6 +74,17 @@ button:focus {
   }
 }
 
+.form {
+  &-control {
+    margin-bottom: 0.5rem;
+  }
+}
+textarea.form-control {
+  height: 6.85rem;
+  border-radius: 1rem;
+  padding-top: 1rem;
+}
+
 @include media-breakpoint-up(md) {
   .pb-5,
   .py-5 {
