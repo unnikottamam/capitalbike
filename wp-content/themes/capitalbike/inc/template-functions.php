@@ -11,30 +11,35 @@
  * @param array $classes Classes for the body element.
  * @return array
  */
-function capitalbike_body_classes( $classes ) {
-	// Adds a class of hfeed to non-singular pages.
-	if ( ! is_singular() ) {
-		$classes[] = 'hfeed';
-	}
+function capitalbike_body_classes($classes)
+{
+  // Adds a class of hfeed to non-singular pages.
+  if (!is_singular()) {
+    $classes[] = 'hfeed';
+  }
 
-	// Adds a class of no-sidebar when there is no sidebar present.
-	if ( ! is_active_sidebar( 'sidebar-1' ) ) {
-		$classes[] = 'no-sidebar';
-	}
+  // Adds a class of no-sidebar when there is no sidebar present.
+  if (!is_active_sidebar('sidebar-1')) {
+    $classes[] = 'no-sidebar';
+  }
 
-	return $classes;
+  return $classes;
 }
-add_filter( 'body_class', 'capitalbike_body_classes' );
+add_filter('body_class', 'capitalbike_body_classes');
 
 /**
  * Add a pingback url auto-discovery header for single posts, pages, or attachments.
  */
-function capitalbike_pingback_header() {
-	if ( is_singular() && pings_open() ) {
-		printf( '<link rel="pingback" href="%s">', esc_url( get_bloginfo( 'pingback_url' ) ) );
-	}
+function capitalbike_pingback_header()
+{
+  if (is_singular() && pings_open()) {
+    printf(
+      '<link rel="pingback" href="%s">',
+      esc_url(get_bloginfo('pingback_url'))
+    );
+  }
 }
-add_action( 'wp_head', 'capitalbike_pingback_header' );
+add_action('wp_head', 'capitalbike_pingback_header');
 
 if (function_exists('acf_add_options_page')) {
   acf_add_options_page();
@@ -50,3 +55,14 @@ function change_menu_classes($css_classes)
   return $css_classes;
 }
 add_filter('nav_menu_css_class', 'change_menu_classes');
+
+// Update Image Size
+update_option('medium_size_w', 176);
+update_option('medium_size_h', 195);
+update_option('medium_crop', 1);
+
+update_option('large_size_w', 460);
+update_option('large_size_h', 460);
+update_option('large_crop', 1);
+
+require_once 'shortcodes.php';

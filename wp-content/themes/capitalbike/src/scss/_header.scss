@@ -147,6 +147,19 @@ body {
 }
 
 @include media-breakpoint-up(lg) {
+  .mainmenu {
+    &__list {
+      li {
+        flex: 0 0 50%;
+        max-width: 50%;
+        font-size: 1.35rem;
+        padding: 0.5rem 0;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
   .header {
     &__row {
       padding: 2rem 3.5rem;
@@ -199,12 +212,6 @@ body {
       }
       &:before {
         bottom: 2rem;
-      }
-      li {
-        flex: 0 0 50%;
-        max-width: 50%;
-        font-size: 1.35rem;
-        padding: 0.5rem 0;
       }
     }
   }

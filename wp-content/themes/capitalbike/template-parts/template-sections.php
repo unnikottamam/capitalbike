@@ -7,150 +7,277 @@
  * @package capitalbike
  */
 
-get_header(); ?>
+get_header();
+if (have_posts()) {
+  while (have_posts()) {
+    the_post();
+    if (have_rows('layouts')) {
+      $sec_id = 0;
+      while (have_rows('layouts')) {
+        the_row();
+        $sec_id++;
 
-<section class="banner text-white">
-    <div class="container">
-        <div class="row banner__row banner-full">
-            <div class="col-lg-6 text-center text-lg-left">
-                <h1>Advocate. Educate. </h1>
-                <p>Capital Bike is a registered non-profit society governed by a volunteer Board of Directors.</p>
-                <ul class="ctalist">
-                    <li><a href="#" class="btn btn-primary">Upcoming Events</a></li>
-                    <li><a href="#" class="btn btn-default">About Us</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="banner__side d-none d-lg-block"></div>
+        if (get_row_layout() == 'home_banner') { ?>
+<section id="section_<?php echo $sec_id; ?>" class="banner text-white">
+   <div class="container">
+      <div class="row banner__row banner-full">
+         <div class="col-lg-6 text-center text-lg-left">
+            <?php
+            the_sub_field('contents');
+            if (have_rows('buttons')) {
+              echo '<ul class="ctalist">';
+              while (have_rows('buttons')) {
+                the_row();
+                if (get_sub_field('link') && get_sub_field('title')) { ?>
+            <li>
+               <a href="<?php the_sub_field(
+                 'link'
+               ); ?>" class="btn btn-<?php the_sub_field(
+  'color'
+); ?>"><?php the_sub_field('title'); ?></a>
+            </li>
+            <?php }
+              }
+              echo '</ul>';
+            }
+            ?>
+         </div>
+      </div>
+   </div>
+   <div class="banner__side d-none d-lg-block"></div>
 </section>
-<section class="py-5 commsec bg-light">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-lg-5 text-center">
-                <h2>GoByBikeWeek 2021</h2>
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                    labore
-                    et dolore magna aliquyam erat, sed diam voluptua.</p>
-                <ul class="ctalist">
-                    <li><a href="#" class="btn btn-secondary">Learn More</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="eventsec bg-primary">
-    <div class="container-fluid">
-        <div class="row justify-content-between">
-            <div class="col-lg-6 text-lg-right eventsec__left">
-                <div class="eventsec__leftinn">
-                    <div class="eventsec__slider">
-                        <div class="eventsec__slide">
-                            <div class="eventsec__slideimg">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/city-bike-event.jpg"
-                                    alt="event">
-                            </div>
-                        </div>
-                        <div class="eventsec__slide">
-                            <div class="eventsec__slideimg">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/city-bike-event.jpg"
-                                    alt="event">
-                            </div>
-                        </div>
-                        <div class="eventsec__slide">
-                            <div class="eventsec__slideimg">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/city-bike-event.jpg"
-                                    alt="event">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-5 eventsec__right pt-lg-6">
-                <h2>Upcoming Events</h2>
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-                    et ea rebum.</p>
-                <ul class="ctalist">
-                    <li><a href="#" class="btn btn-dark">View Events</a></li>
-                    <li><a href="#" class="btn btn-default">Contact Us</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="clouddesign text-white">
-    <div class="clouddesign__img">
-        <img src="<?php echo get_template_directory_uri(); ?>/images/curved-image.png" alt="curved-image">
-    </div>
-    <div class="container">
-        <div class="clouddesign__cont">
-            <h2>Catchy City Riding Urban Title.</h2>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-                ut
-                labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
-                dolores
-                et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                Lorem ipsum dolor sit amet, consetetur.</p>
-            <ul class="ctalist">
-                <li><a href="#" class="btn btn-primary">Learn More</a></li>
-            </ul>
-        </div>
-    </div>
-</section>
-<section class="py-5 commsec">
-    <div class="container">
-        <div class="row align-items-center justify-content-between">
-            <div class="col-lg-4 text-center text-lg-left">
-                <h2>Our Sponsors</h2>
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                    labore et dolore magna aliquyam erat, sed diam voluptua.</p>
-                <ul class="ctalist">
-                    <li><a href="#" class="btn btn-secondary">Become a Sponsor</a></li>
-                </ul>
-            </div>
-            <div class="col-lg-7">
-                <div class="brands__slider">
-                    <div class="brands__slide">
-                        <img src="<?php echo get_template_directory_uri(); ?>/images/logo-1.png" alt="logo">
-                    </div>
-                    <div class="brands__slide">
-                        <img src="<?php echo get_template_directory_uri(); ?>/images/logo-2.svg" alt="logo">
-                    </div>
-                    <div class="brands__slide">
-                        <img src="<?php echo get_template_directory_uri(); ?>/images/logo-3.svg" alt="logo">
-                    </div>
-                    <div class="brands__slide">
-                        <img src="<?php echo get_template_directory_uri(); ?>/images/logo-1.png" alt="logo">
-                    </div>
-                    <div class="brands__slide">
-                        <img src="<?php echo get_template_directory_uri(); ?>/images/logo-2.svg" alt="logo">
-                    </div>
-                    <div class="brands__slide">
-                        <img src="<?php echo get_template_directory_uri(); ?>/images/logo-3.svg" alt="logo">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="py-5 commsec text-white bg-dark newsletter">
-    <div class="container">
-        <div class="row align-items-center text-center text-md-left">
-            <div class="col-lg-4 col-md-8">
-                <h2>Subscribe To Our Newsletter</h2>
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumkoly eirmod tempor invidunt ut
-                    labo dolor.</p>
-            </div>
-            <div class="col-lg-6 col-xl-5 pl-lg-5 col-md-8">
-                <form>
-                    <input type="text" placeholder="Full Name" class="form-control">
-                    <input type="email" placeholder="Email Address" class="form-control">
-                    <button class="btn btn-lg btn-block btn-secondary">Sign Me Up!</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
+<?php }
 
-<?php get_footer();
+        if (get_row_layout() == 'common_content') {
+          if (have_rows('styles')) {
+            while (have_rows('styles')) {
+              the_row();
+              $bg_color = get_sub_field('bg_color');
+              $text_color = get_sub_field('text_color');
+              $text_align = get_sub_field('text_align');
+              $column_size = get_sub_field('column_size');
+              switch ($column_size) {
+                case 'small':
+                  $class = "col-md-6 col-lg-5";
+                  break;
+                case 'medium':
+                  $class = "col-md-9 col-lg-7";
+                  break;
+                case 'large':
+                  $class = "col-md-11 col-lg-10";
+                  break;
+
+                default:
+                  $class = "col-12";
+                  break;
+              }
+            }
+          } ?>
+<section id="section_<?php echo $sec_id; ?>"
+   class="py-5 commsec bg-<?php echo $bg_color; ?> text-<?php echo $text_color; ?> ">
+   <div class="container">
+      <div class="row justify-content-center">
+         <div class="<?php echo $class; ?> text-<?php echo $text_align; ?>">
+            <?php
+            the_sub_field('contents');
+            if (have_rows('buttons')) {
+              echo '<ul class="ctalist">';
+              while (have_rows('buttons')) {
+                the_row();
+                if (get_sub_field('link') && get_sub_field('title')) { ?>
+            <li>
+               <a href="<?php the_sub_field(
+                 'link'
+               ); ?>" class="btn btn-<?php the_sub_field(
+  'color'
+); ?>"><?php the_sub_field('title'); ?></a>
+            </li>
+            <?php }
+              }
+              echo '</ul>';
+            }
+            ?>
+         </div>
+      </div>
+   </div>
+</section>
+<?php
+        }
+
+        if (get_row_layout() == 'events_area') { ?>
+<section id="section_<?php echo $sec_id; ?>" class="eventsec bg-primary">
+   <div class="container-fluid">
+      <div class="row justify-content-between">
+         <div class="col-lg-6 text-lg-right eventsec__left">
+            <div class="eventsec__leftinn">
+               <?php if (have_rows('image_slider')) {
+                 echo '<div class="eventsec__slider">';
+                 while (have_rows('image_slider')) {
+
+                   the_row();
+                   $image = get_sub_field('image');
+                   if (get_sub_field('image')) {
+
+                     $size = 'large';
+                     $src = $image['sizes'][$size];
+                     $alt = $image['alt'] ? $image['alt'] : "Events";
+                     ?>
+               <div class="eventsec__slide">
+                  <div class="eventsec__slideimg">
+                     <img src="<?php echo $src; ?>" alt="<?php echo $alt; ?>">
+                  </div>
+               </div>
+               <?php
+                   }
+                   ?>
+               <?php
+                 }
+                 echo '</div>';
+               } ?>
+            </div>
+         </div>
+         <div class="col-lg-5 eventsec__right pt-lg-6">
+            <?php
+            the_sub_field('contents');
+            if (have_rows('buttons')) {
+              echo '<ul class="ctalist">';
+              while (have_rows('buttons')) {
+                the_row();
+                if (get_sub_field('link') && get_sub_field('title')) { ?>
+            <li>
+               <a href="<?php the_sub_field(
+                 'link'
+               ); ?>" class="btn btn-<?php the_sub_field(
+  'color'
+); ?>"><?php the_sub_field('title'); ?></a>
+            </li>
+            <?php }
+              }
+              echo '</ul>';
+            }
+            ?>
+         </div>
+      </div>
+   </div>
+</section>
+<?php }
+
+        if (get_row_layout() == 'parallax_area') { ?>
+<section id="section_<?php echo $sec_id; ?>" class="clouddesign text-white">
+   <?php
+   $image = get_sub_field('bg_image');
+   if ($image) {
+
+     $src = $image['url'];
+     $alt = $image['alt'];
+     ?>
+   <div class="clouddesign__img">
+      <img src="<?php echo $src; ?>" alt="<?php echo $alt; ?>">
+   </div>
+   <?php
+   }
+   ?>
+   <div class="container">
+      <div class="clouddesign__cont">
+         <?php
+         the_sub_field('contents');
+         if (have_rows('buttons')) {
+           echo '<ul class="ctalist">';
+           while (have_rows('buttons')) {
+             the_row();
+             if (get_sub_field('link') && get_sub_field('title')) { ?>
+         <li>
+            <a href="<?php the_sub_field(
+              'link'
+            ); ?>" class="btn btn-<?php the_sub_field(
+  'color'
+); ?>"><?php the_sub_field('title'); ?></a>
+         </li>
+         <?php }
+           }
+           echo '</ul>';
+         }
+         ?>
+      </div>
+   </div>
+</section>
+<?php }
+
+        if (get_row_layout() == 'sponsors') { ?>
+<section id="section_<?php echo $sec_id; ?>" class="py-5 commsec">
+   <div class="container">
+      <div class="row align-items-center justify-content-between">
+         <div class="col-lg-4 text-center text-lg-left">
+            <?php
+            the_sub_field('contents');
+            if (have_rows('buttons')) {
+              echo '<ul class="ctalist">';
+              while (have_rows('buttons')) {
+                the_row();
+                if (get_sub_field('link') && get_sub_field('title')) { ?>
+            <li>
+               <a href="<?php the_sub_field(
+                 'link'
+               ); ?>" class="btn btn-<?php the_sub_field(
+  'color'
+); ?>"><?php the_sub_field('title'); ?></a>
+            </li>
+            <?php }
+              }
+              echo '</ul>';
+            }
+            ?>
+         </div>
+         <?php if (have_rows('sponsors_list', 'options')) { ?>
+         <div class="col-lg-7">
+            <div class="brands__slider">
+               <?php while (have_rows('sponsors_list', 'options')) {
+                 the_row();
+                 $link = get_sub_field('link');
+                 $image = get_sub_field('image');
+                 if ($image) {
+
+                   $src = $image['url'];
+                   $alt = $image['alt']
+                     ? $image['alt']
+                     : get_sub_field('title');
+                   ?>
+               <div class="brands__slide">
+                  <?php if ($link) {
+                    echo '<a href="' . $link . '">';
+                  } ?>
+                  <img src="<?php echo $src; ?>" alt="<?php echo $alt; ?>">
+                  <?php if ($link) {
+                    echo '</a>';
+                  } ?>
+               </div>
+               <?php
+                 }
+               } ?>
+            </div>
+         </div>
+         <?php } ?>
+      </div>
+   </div>
+</section>
+<?php }
+
+        if (get_row_layout() == 'newsletter') { ?>
+<section id="section_<?php echo $sec_id; ?>" class="py-5 commsec text-white bg-dark newsletter">
+   <div class="container">
+      <div class="row text-center text-md-left">
+         <div class="col-lg-4 col-md-8">
+            <?php the_field('subscribe_content', 'options'); ?>
+         </div>
+         <?php get_template_part('template-parts/newsletter', 'area'); ?>
+      </div>
+   </div>
+</section>
+<?php }
+      }
+    } else {
+      get_template_part('template-parts/content', 'page');
+    }
+  }
+}
+get_footer();
