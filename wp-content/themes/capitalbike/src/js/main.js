@@ -3,7 +3,10 @@ $(document).ready(function () {
     e.preventDefault();
     $("body, .header, .mainmenu, .header__toggle").toggleClass("menuactive");
   });
-  $(".scroll-down").on("click", function (e) {
+  $(".mainmenu__list li a").on("click", function (e) {
+    $("body, .header, .mainmenu, .header__toggle").removeClass("menuactive");
+  });
+  $(".scroll-down, .ctalist .btn[href*='#']").on("click", function (e) {
     e.preventDefault();
     $("html, body").animate(
       {
@@ -12,12 +15,24 @@ $(document).ready(function () {
       500
     );
   });
+  // $(".mainmenu li a[href*='#']").on("click", function (e) {
+  //   e.preventDefault();
+  //   $link = $(".mainmenu li a[href*='#']").attr("href").split("#").pop();
+  //   $("html, body").animate(
+  //     {
+  //       scrollTop: $(`#${$link}`).offset().top
+  //     },
+  //     500
+  //   );
+  // });
 
   $(".eventsec__slider").slick({
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
     fade: true,
+    autoplay: true,
+    autoplaySpeed: 5000,
     dots: true
   });
 
@@ -26,6 +41,8 @@ $(document).ready(function () {
     slidesToScroll: 1,
     arrows: false,
     fade: true,
+    autoplay: true,
+    autoplaySpeed: 5000,
     dots: true
   });
 
@@ -34,6 +51,8 @@ $(document).ready(function () {
     slidesToScroll: 1,
     dots: false,
     arrows: true,
+    autoplay: true,
+    autoplaySpeed: 3000,
     responsive: [
       {
         breakpoint: 540,
@@ -49,6 +68,8 @@ $(document).ready(function () {
     slidesToScroll: 1,
     dots: false,
     arrows: true,
+    autoplay: true,
+    autoplaySpeed: 5000,
     responsive: [
       {
         breakpoint: 992,
@@ -70,6 +91,8 @@ $(document).ready(function () {
     slidesToScroll: 1,
     dots: false,
     arrows: true,
+    autoplay: true,
+    autoplaySpeed: 8000,
     responsive: [
       {
         breakpoint: 992,

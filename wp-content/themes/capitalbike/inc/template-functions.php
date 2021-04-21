@@ -56,13 +56,9 @@ function change_menu_classes($css_classes)
 }
 add_filter('nav_menu_css_class', 'change_menu_classes');
 
-// Update Image Size
-update_option('medium_size_w', 176);
-update_option('medium_size_h', 195);
-update_option('medium_crop', 1);
-
 update_option('large_size_w', 460);
 update_option('large_size_h', 460);
 update_option('large_crop', 1);
 
 require_once 'shortcodes.php';
+require_once 'aq_resizer.php';

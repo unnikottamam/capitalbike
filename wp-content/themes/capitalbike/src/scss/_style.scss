@@ -83,7 +83,7 @@ button:focus {
 
 .form {
   &-control {
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
   }
 }
 textarea.form-control {
@@ -132,6 +132,11 @@ textarea.form-control {
       }
     }
   }
+}
+
+.grecaptcha-badge {
+  visibility: hidden !important;
+  opacity: 0 !important;
 }
 
 @include media-breakpoint-up(md) {
@@ -204,5 +209,9 @@ textarea.form-control {
   .pt-6,
   .py-6 {
     padding-top: 8.5rem !important;
+  }
+
+  textarea.form-control {
+    height: 11.65rem;
   }
 }

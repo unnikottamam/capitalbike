@@ -75,11 +75,16 @@
   transform: scale(0.95) translateY(-3rem);
   opacity: 0;
   visibility: hidden;
-  @include transition;
   &.menuactive {
     transform: scale(1) translateY(0);
     opacity: 1;
     visibility: visible;
+    @include transition;
+    .mainmenu {
+      &__bg {
+        transform: scaleY(1);
+      }
+    }
   }
   &:before {
     content: "";
@@ -94,8 +99,22 @@
     overflow-y: auto;
     height: calc(100vh - 5rem);
     padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-bottom: 4rem;
     position: relative;
+  }
+  &__bg {
+    position: relative;
+    width: 100%;
+    height: 4rem;
+    z-index: 6;
+    margin-bottom: -4rem;
+    background-image: url(../images/menu-curve.svg);
+    background-position: top center;
+    background-repeat: repeat-x;
+    transform: scaleY(0);
+    @include transition;
+    transform-origin: bottom center;
+    transition-delay: 0.3s;
   }
   &__row {
     height: 100%;
@@ -138,6 +157,12 @@
       }
     }
   }
+  .container {
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    padding-bottom: 2rem;
+  }
 }
 
 body {
@@ -146,7 +171,7 @@ body {
   }
 }
 
-@include media-breakpoint-up(lg) {
+@include media-breakpoint-up(md) {
   .mainmenu {
     &__list {
       li {
@@ -179,21 +204,8 @@ body {
     }
     &__inn {
       height: calc(100vh - 8.875rem);
-      padding-top: 4rem;
-      padding-bottom: 4rem;
-      &:before {
-        content: "";
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100vw;
-        height: 3.4rem;
-        background-image: url(../images/menu-curve.svg);
-        background-position: top center;
-        background-repeat: repeat-x;
-      }
+      padding-top: 3rem;
     }
-
     &__list {
       padding: 0 0 2rem;
       margin: 0 0 2rem;
