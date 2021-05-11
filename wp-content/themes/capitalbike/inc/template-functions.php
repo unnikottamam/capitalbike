@@ -62,3 +62,34 @@ update_option('large_crop', 1);
 
 require_once 'shortcodes.php';
 require_once 'aq_resizer.php';
+
+// Remove the CiviCRM styles from front-end displays.
+function my_remove_civicrm_styles()
+{
+  if (!is_admin()) {
+    global $civicrm_root;
+    if (empty($civicrm_root)) {
+      return;
+    }
+    $civicrm_css = CRM_Core_Resources::singleton()->getUrl(
+      'civicrm',
+      'css/civicrm.css',
+      true
+    );
+    CRM_Core_Region::instance('html-header')->update($civicrm_css, [
+      'disabled' => true,
+    ]);
+  }
+}
+add_action('wp_print_styles', 'my_remove_civicrm_styles', 100);
+
+function changeCiviCass($text)
+{
+  $replace = [
+    'crm-form-text' => 'crm-form-text form-control',
+    'crm-form-submit' => 'crm-form-submit btn btn-primary',
+  ];
+  $text = str_replace(array_keys($replace), $replace, $text);
+  return $text;
+}
+add_filter('the_content', 'changeCiviCass');
