@@ -1,6 +1,5 @@
-.crm-container {
-  border: 2px solid $light;
-  padding: 1.75rem;
+.crm-title {
+  display: none;
 }
 
 .crm-form-text,
@@ -33,17 +32,16 @@
 }
 
 .crm-section {
-  &.payment_processor-section > .content > label:last-child {
-    margin-top: -1.25rem !important;
-  }
   &.section-pricesetTotal {
-    padding: 1.75rem 0;
+    padding: 1.15rem 0;
+    text-align: center;
   }
   &.cividiscount {
-    padding: 0 0 1.75rem;
+    padding: 1rem 0 1.75rem;
   }
   label {
-    display: block;
+    display: inline-block;
+    vertical-align: top;
     padding: 0 0 0 1rem;
     color: $secondary;
   }
