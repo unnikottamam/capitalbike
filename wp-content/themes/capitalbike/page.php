@@ -65,7 +65,7 @@ if (have_rows('page_banner')) {
 }
 ?>
 
-<section id="section_2" class="py-5 bg-light commsec">
+<section id="section_2" class="py-6 bg-light commsec">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10">

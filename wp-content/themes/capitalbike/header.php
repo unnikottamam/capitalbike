@@ -41,7 +41,7 @@
                 </div>
                 <div class="col-md-7 col-sm-6 col-4 text-right">
                     <a href="<?php echo get_permalink(
-                      15
+                      294
                     ); ?>" class="btn btn-secondary d-none d-sm-inline-block">Join Us</a>
                     <a href="#" class="header__toggle ml-sm-3">
                         <span class="toggle__1"></span>
