@@ -357,7 +357,27 @@
       height: 3rem;
       background-repeat: repeat-x;
       background-position: top center;
-      background-image: url("../images/banner-cloud.svg");
+      background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='1366' height='128.87'><path data-name='Path 1676' d='M1366 0c-56.92 0-56.92 27.83-113.84 27.83S1195.24 0 1138.32 0s-56.917 27.83-113.834 27.83S967.57 0 910.655 0s-56.917 27.83-113.833 27.83S739.906 0 682.99 0s-56.917 27.83-113.833 27.83S512.243 0 455.328 0s-56.916 27.83-113.832 27.83S284.58 0 227.664 0s-56.916 27.83-113.832 27.83S56.916 0 0 0v128.87h1366z' fill='#{svg-color($light)}'/></svg>");
+    }
+    &.white {
+      &:after {
+        background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='1366' height='128.87'><path data-name='Path 1676' d='M1366 0c-56.92 0-56.92 27.83-113.84 27.83S1195.24 0 1138.32 0s-56.917 27.83-113.834 27.83S967.57 0 910.655 0s-56.917 27.83-113.833 27.83S739.906 0 682.99 0s-56.917 27.83-113.833 27.83S512.243 0 455.328 0s-56.916 27.83-113.832 27.83S284.58 0 227.664 0s-56.916 27.83-113.832 27.83S56.916 0 0 0v128.87h1366z' fill='#{svg-color($white)}'/></svg>");
+      }
+    }
+    &.yellow {
+      &:after {
+        background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='1366' height='128.87'><path data-name='Path 1676' d='M1366 0c-56.92 0-56.92 27.83-113.84 27.83S1195.24 0 1138.32 0s-56.917 27.83-113.834 27.83S967.57 0 910.655 0s-56.917 27.83-113.833 27.83S739.906 0 682.99 0s-56.917 27.83-113.833 27.83S512.243 0 455.328 0s-56.916 27.83-113.832 27.83S284.58 0 227.664 0s-56.916 27.83-113.832 27.83S56.916 0 0 0v128.87h1366z' fill='#{svg-color($primary)}'/></svg>");
+      }
+    }
+    &.red {
+      &:after {
+        background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='1366' height='128.87'><path data-name='Path 1676' d='M1366 0c-56.92 0-56.92 27.83-113.84 27.83S1195.24 0 1138.32 0s-56.917 27.83-113.834 27.83S967.57 0 910.655 0s-56.917 27.83-113.833 27.83S739.906 0 682.99 0s-56.917 27.83-113.833 27.83S512.243 0 455.328 0s-56.916 27.83-113.832 27.83S284.58 0 227.664 0s-56.916 27.83-113.832 27.83S56.916 0 0 0v128.87h1366z' fill='#{svg-color($secondary)}'/></svg>");
+      }
+    }
+    &.blue {
+      &:after {
+        background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='1366' height='128.87'><path data-name='Path 1676' d='M1366 0c-56.92 0-56.92 27.83-113.84 27.83S1195.24 0 1138.32 0s-56.917 27.83-113.834 27.83S967.57 0 910.655 0s-56.917 27.83-113.833 27.83S739.906 0 682.99 0s-56.917 27.83-113.833 27.83S512.243 0 455.328 0s-56.916 27.83-113.832 27.83S284.58 0 227.664 0s-56.916 27.83-113.832 27.83S56.916 0 0 0v128.87h1366z' fill='#{svg-color($dark)}'/></svg>");
+      }
     }
   }
 }
@@ -476,6 +496,52 @@
   }
 }
 
+.post {
+  &__thumb {
+    a {
+      &:hover {
+        color: $secondary;
+        h2 {
+          @include transition;
+          color: $secondary;
+        }
+        .post__thumbimg {
+          img {
+            transform: scale(1.35) rotate(-5deg);
+          }
+        }
+      }
+    }
+    &.even {
+      a {
+        &:hover {
+          color: $primary;
+          h2 {
+            color: $primary;
+          }
+        }
+      }
+      .post {
+        &__thumbimg {
+          margin: 2rem 0;
+        }
+        &__thumbcont {
+          padding-bottom: 2rem;
+        }
+      }
+    }
+  }
+  &__thumbimg {
+    margin: 0 0 2rem;
+    border-radius: 3rem;
+    overflow: hidden;
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+}
+
 @include media-breakpoint-down(md) {
   .eventsec {
     &__right {
@@ -550,6 +616,31 @@
       width: 100%;
       height: 100%;
       background: linear-gradient(45deg, $dark 50%, transparent, transparent);
+    }
+  }
+
+  .post {
+    &__thumb {
+      &.odd {
+        .post {
+          &__thumbimg {
+            margin-right: 2rem;
+          }
+          &__thumbcont {
+            padding-left: 2rem;
+          }
+        }
+      }
+      &.even {
+        .post {
+          &__thumbimg {
+            margin-left: 2rem;
+          }
+          &__thumbcont {
+            padding-right: 2rem;
+          }
+        }
+      }
     }
   }
 }
