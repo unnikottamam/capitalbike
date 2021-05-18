@@ -28,7 +28,7 @@ if ($remote_wp['response']['code'] == 200) { ?>
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <img src="<?php echo get_template_directory_uri(); ?>/images/bike-icon.svg" alt="instagram">
+                <img width="414" height="415" src="<?php echo get_template_directory_uri(); ?>/images/bike-icon.svg" alt="instagram">
                 <?php if ($username) { ?>
                 <h3>
                     <?php echo $instalink
