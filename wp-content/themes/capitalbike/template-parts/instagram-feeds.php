@@ -28,7 +28,7 @@ if ($remote_wp['response']['code'] == 200) { ?>
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <img width="414" height="415" src="<?php echo get_template_directory_uri(); ?>/images/bike-icon.svg"
+                <img width="87" height="51" src="<?php echo get_template_directory_uri(); ?>/images/bike-icon.svg"
                     alt="instagram">
                 <?php if ($username) { ?>
                 <h3>
@@ -54,7 +54,8 @@ if ($remote_wp['response']['code'] == 200) { ?>
                 $count++; ?>
             <div class="instasec__slide">
                 <a target="_blank" href="<?php echo $res->permalink; ?>">
-                    <img src="<?php echo $res->media_url; ?>" alt="<?php echo $res->caption; ?>">
+                    <img width="414" height="415" src="<?php echo $res->media_url; ?>"
+                        alt="<?php echo $res->caption; ?>">
                 </a>
             </div>
             <?php
