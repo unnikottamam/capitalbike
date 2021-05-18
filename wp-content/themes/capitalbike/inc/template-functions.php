@@ -93,3 +93,47 @@ function changeCiviCass($text)
   return $text;
 }
 add_filter('the_content', 'changeCiviCass');
+
+// Load More Funtion
+function my_load_more_scripts()
+{
+  global $wp_query;
+  wp_register_script(
+    'my_loadmore',
+    get_stylesheet_directory_uri() . '/js/loadmore.js',
+    ['jquery']
+  );
+
+  wp_localize_script('my_loadmore', 'loadmore_params', [
+    'ajaxurl' => site_url() . '/wp-admin/admin-ajax.php',
+    'posts' => json_encode($wp_query->query_vars),
+    'current_page' => get_query_var('paged') ? get_query_var('paged') : 1,
+    'max_page' => $wp_query->max_num_pages,
+  ]);
+
+  wp_enqueue_script('my_loadmore');
+}
+add_action('wp_enqueue_scripts', 'my_load_more_scripts');
+
+function loadmore_ajax_handler()
+{
+  $args = json_decode(stripslashes($_POST['query']), true);
+  $args['paged'] = $_POST['page'] + 1;
+  $args['post_status'] = 'publish';
+
+  query_posts($args);
+  $ct = $_POST['page'] % 2 ? 1 : 0;
+  if (have_posts()) {
+    while (have_posts()) {
+      the_post();
+      $ct = $ct == 1 ? 0 : ++$ct;
+      get_template_part('template-parts/content', get_post_type(), [
+        'class' => $ct,
+      ]);
+    }
+  }
+  die();
+}
+
+add_action('wp_ajax_loadmore', 'loadmore_ajax_handler');
+add_action('wp_ajax_nopriv_loadmore', 'loadmore_ajax_handler');
