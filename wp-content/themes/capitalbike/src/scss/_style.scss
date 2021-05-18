@@ -22,7 +22,8 @@ button:focus {
   outline: none;
 }
 
-.sr-only {
+.sr-only,
+.screen-reader-text {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -70,6 +71,7 @@ button:focus {
 
 .text {
   &-white {
+    fill: $white;
     h1,
     h2,
     h3,

@@ -6,15 +6,18 @@ $(document).ready(function () {
   $(".mainmenu__list li a").on("click", function (e) {
     $("body, .header, .mainmenu, .header__toggle").removeClass("menuactive");
   });
-  $(".scroll-down, .ctalist .btn[href*='#']").on("click", function (e) {
-    e.preventDefault();
-    $("html, body").animate(
-      {
-        scrollTop: $($(this).attr("href")).offset().top
-      },
-      500
-    );
-  });
+  $(".scroll-down, .ctalist .btn[href*='#'], .pagebanner__down").on(
+    "click",
+    function (e) {
+      e.preventDefault();
+      $("html, body").animate(
+        {
+          scrollTop: $($(this).attr("href")).offset().top
+        },
+        500
+      );
+    }
+  );
   // $(".mainmenu li a[href*='#']").on("click", function (e) {
   //   e.preventDefault();
   //   $link = $(".mainmenu li a[href*='#']").attr("href").split("#").pop();

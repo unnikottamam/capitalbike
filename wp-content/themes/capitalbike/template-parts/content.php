@@ -42,11 +42,13 @@ $post_class .=
                     </div>
                     <div class="col-md-6 post__thumbcont">
                         <?php the_title('<h2>', '</h2>'); ?>
-                        <p><?php echo wp_trim_words(
-                          get_the_excerpt(),
-                          30,
-                          '...'
-                        ); ?></p>
+                        <p>
+                            <?php echo wp_trim_words(
+                              get_the_excerpt(),
+                              30,
+                              '...'
+                            ); ?>
+                        </p>
                         <span class="btn btn-<?php echo $count == 0
                           ? 'primary'
                           : 'secondary'; ?>">Read More</span>

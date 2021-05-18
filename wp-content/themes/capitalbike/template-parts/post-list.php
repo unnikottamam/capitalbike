@@ -19,7 +19,7 @@ if (have_posts()) {
   }
   if ($wp_query->max_num_pages > 1) { ?>
 <div class="container text-center">
-    <button class="load-more btn btn-secondary">Load More</button>
+    <button class="load-more btn btn-primary">Load More</button>
 </div>
 <?php }
   echo '</div>';
