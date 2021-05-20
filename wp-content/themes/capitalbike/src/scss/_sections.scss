@@ -526,6 +526,11 @@
       background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1371 304.52'><path fill='#{svg-color($primary)}' d='M1371 2.19v302.33H0V.06C2.71.02 5.44 0 8.2 0c328.36 0 328.36 271.08 656.72 271.08S993.28 0 1321.64 0c17.34 0 33.76.76 49.36 2.19z'/></svg>");
     }
   }
+  &.none {
+    &:after {
+      background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1371 304.52'><path fill='#{svg-color($white)}' d='M1371 2.19v302.33H0V.06C2.71.02 5.44 0 8.2 0c328.36 0 328.36 271.08 656.72 271.08S993.28 0 1321.64 0c17.34 0 33.76.76 49.36 2.19z'/></svg>");
+    }
+  }
   .container {
     position: relative;
     z-index: 5;
@@ -539,8 +544,15 @@
 }
 
 .horizline {
-  hr {
-    border: 2px dashed;
+  position: relative;
+  &:before {
+    content: "";
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    height: 2px;
+    border-top: 0.25rem dashed;
+    max-width: 42rem;
   }
 }
 

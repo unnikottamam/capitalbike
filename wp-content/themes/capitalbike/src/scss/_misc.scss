@@ -1,5 +1,13 @@
-// Remove from theme
-$theme-colors: map-remove($theme-colors, "darklight");
+// add to theme colors
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "light": $light,
+  "dark": $dark,
+  "white": $white,
+  "black": $black,
+  "darklight": $darklight
+);
 
 // Responsive alignment
 @each $breakpoint in map-keys($grid-breakpoints) {

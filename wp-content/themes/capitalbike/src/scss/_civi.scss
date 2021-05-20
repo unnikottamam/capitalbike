@@ -129,3 +129,28 @@
 .crm-public h1 {
   font-size: 2.75rem;
 }
+
+.crm-container table td,
+.crm-container table th {
+  padding: 0.5rem 1rem;
+  border: 1px solid $grey_light;
+}
+
+.crm-container #membership {
+  padding: 1rem 0 0;
+}
+.crm-container table {
+  width: 100%;
+  margin: 0.5rem 0 1rem;
+}
+.CRM_Contribute_Form_Contribution_Confirm label {
+  padding: 0.5rem 0 0 !important;
+  display: block !important;
+  margin: 0 0 0.15rem !important;
+}
+.CRM_Contribute_Form_Contribution_Confirm #crm-submit-buttons {
+  padding: 1rem 0 0 !important;
+}
+.CRM_Contribute_Form_Contribution_Confirm .total_amount-section {
+  padding: 0 0 1rem !important;
+}

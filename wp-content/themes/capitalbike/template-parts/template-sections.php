@@ -446,12 +446,10 @@ if (have_posts()) {
 </section>
 <?php }
 
-if (get_row_layout() == 'horizontal_line') { ?>
-<section id="section_<?php echo $sec_id; ?>"
-    class="horizline text-<?php echo get_field('color'); ?> bg-<?php echo get_field('bg_color'); ?>">
-    <div class="container">
-        <hr>
-    </div>
+        if (get_row_layout() == 'horizontal_line') { ?>
+<section id="section_<?php echo $sec_id; ?>" class="horizline text-<?php echo get_sub_field(
+  'color'
+); ?> bg-<?php echo get_sub_field('bg_color'); ?>">
 </section>
 <?php }
 
@@ -462,7 +460,7 @@ if (get_row_layout() == 'horizontal_line') { ?>
               $bg_color = get_sub_field('bg_color');
               $text_color = get_sub_field('text_color');
               $text_align = get_sub_field('text_align');
-              $curve_color = get_sub_field('column_size');
+              $curve_color = get_sub_field('curve_color');
             }
           } ?>
 <section id="section_<?php echo $sec_id; ?>"
@@ -493,7 +491,8 @@ if (get_row_layout() == 'horizontal_line') { ?>
         </div>
     </div>
 </section>
-<?php }
+<?php
+        }
 
         if (get_row_layout() == 'sponsors') { ?>
 <section id="section_<?php echo $sec_id; ?>" class="py-5 commsec">
