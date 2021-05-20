@@ -446,6 +446,55 @@ if (have_posts()) {
 </section>
 <?php }
 
+if (get_row_layout() == 'horizontal_line') { ?>
+<section id="section_<?php echo $sec_id; ?>"
+    class="horizline text-<?php echo get_field('color'); ?> bg-<?php echo get_field('bg_color'); ?>">
+    <div class="container">
+        <hr>
+    </div>
+</section>
+<?php }
+
+        if (get_row_layout() == 'curve_bg_content_area') {
+          if (have_rows('styles')) {
+            while (have_rows('styles')) {
+              the_row();
+              $bg_color = get_sub_field('bg_color');
+              $text_color = get_sub_field('text_color');
+              $text_align = get_sub_field('text_align');
+              $curve_color = get_sub_field('column_size');
+            }
+          } ?>
+<section id="section_<?php echo $sec_id; ?>"
+    class="aboutsec <?php echo $curve_color; ?> py-6 text-<?php echo $text_color; ?> bg-<?php echo $bg_color; ?>">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-8 text-<?php echo $text_align; ?>">
+                <?php
+                the_sub_field('contents');
+                if (have_rows('buttons')) {
+                  echo '<ul class="ctalist">';
+                  while (have_rows('buttons')) {
+                    the_row();
+                    if (get_sub_field('link') && get_sub_field('title')) { ?>
+                <li>
+                    <a href="<?php the_sub_field(
+                      'link'
+                    ); ?>" class="btn btn-<?php the_sub_field(
+  'color'
+); ?>"><?php the_sub_field('title'); ?></a>
+                </li>
+                <?php }
+                  }
+                  echo '</ul>';
+                }
+                ?>
+            </div>
+        </div>
+    </div>
+</section>
+<?php }
+
         if (get_row_layout() == 'sponsors') { ?>
 <section id="section_<?php echo $sec_id; ?>" class="py-5 commsec">
     <div class="container">

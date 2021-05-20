@@ -493,13 +493,38 @@
     width: 100%;
     height: 100%;
     background-size: contain;
-    background-image: url("../images/about-us-overlay.svg");
+    background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1371 304.52'><path fill='#{svg-color($dark)}' d='M1371 2.19v302.33H0V.06C2.71.02 5.44 0 8.2 0c328.36 0 328.36 271.08 656.72 271.08S993.28 0 1321.64 0c17.34 0 33.76.76 49.36 2.19z'/></svg>");
     background-position: bottom;
     background-repeat: repeat-x;
     z-index: 1;
     position: absolute;
     left: 0;
     bottom: 0;
+  }
+  &.white {
+    &:after {
+      background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1371 304.52'><path fill='#{svg-color($white)}' d='M1371 2.19v302.33H0V.06C2.71.02 5.44 0 8.2 0c328.36 0 328.36 271.08 656.72 271.08S993.28 0 1321.64 0c17.34 0 33.76.76 49.36 2.19z'/></svg>");
+    }
+  }
+  &.darklight {
+    &:after {
+      background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1371 304.52'><path fill='#{svg-color($darklight)}' d='M1371 2.19v302.33H0V.06C2.71.02 5.44 0 8.2 0c328.36 0 328.36 271.08 656.72 271.08S993.28 0 1321.64 0c17.34 0 33.76.76 49.36 2.19z'/></svg>");
+    }
+  }
+  &.light {
+    &:after {
+      background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1371 304.52'><path fill='#{svg-color($light)}' d='M1371 2.19v302.33H0V.06C2.71.02 5.44 0 8.2 0c328.36 0 328.36 271.08 656.72 271.08S993.28 0 1321.64 0c17.34 0 33.76.76 49.36 2.19z'/></svg>");
+    }
+  }
+  &.red {
+    &:after {
+      background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1371 304.52'><path fill='#{svg-color($secondary)}' d='M1371 2.19v302.33H0V.06C2.71.02 5.44 0 8.2 0c328.36 0 328.36 271.08 656.72 271.08S993.28 0 1321.64 0c17.34 0 33.76.76 49.36 2.19z'/></svg>");
+    }
+  }
+  &.yellow {
+    &:after {
+      background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1371 304.52'><path fill='#{svg-color($primary)}' d='M1371 2.19v302.33H0V.06C2.71.02 5.44 0 8.2 0c328.36 0 328.36 271.08 656.72 271.08S993.28 0 1321.64 0c17.34 0 33.76.76 49.36 2.19z'/></svg>");
+    }
   }
   .container {
     position: relative;
@@ -510,6 +535,12 @@
 .contactarea {
   &__form {
     padding-top: 2rem;
+  }
+}
+
+.horizline {
+  hr {
+    border: 2px dashed;
   }
 }
 
@@ -628,11 +659,13 @@
     }
   }
   &__main {
-    padding: 3rem 0;
-    border-top: 2px solid $black_30;
-    border-bottom: 2px solid $black_30;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    &:not(.page) {
+      padding: 3rem 0;
+      border-top: 2px solid $black_30;
+      border-bottom: 2px solid $black_30;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
     img {
       margin: 2rem auto;
       border-radius: 2rem;
