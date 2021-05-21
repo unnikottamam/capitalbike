@@ -56,8 +56,12 @@ if (have_posts()) {
 <?php }
 
         if (get_row_layout() == 'page_banner') {
-          $overlay = get_sub_field('overlay_type'); ?>
-<section id="section_<?php echo $sec_id; ?>" class="pagebanner text-white cloud<?php echo $overlay; ?>">
+
+          $cloud_color = get_sub_field('cloud_color');
+          $overlay = get_sub_field('overlay_type');
+          ?>
+<section id="section_<?php echo $sec_id; ?>"
+    class="pagebanner text-white cloud<?php echo $overlay; ?> <?php echo $cloud_color; ?>">
     <?php
     $image = get_sub_field('bg_image');
     if ($image) {
@@ -91,6 +95,15 @@ if (have_posts()) {
                 <?php }
                   }
                   echo '</ul>';
+                } else {
+                   ?>
+                <a href="#section_2" class="pagebanner__down">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                        <path
+                            d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                    </svg>
+                </a>
+                <?php
                 }
                 ?>
             </div>
@@ -107,6 +120,13 @@ if (have_posts()) {
               $bg_color = get_sub_field('bg_color');
               $text_color = get_sub_field('text_color');
               $text_align = get_sub_field('text_align');
+              $needcurve = get_sub_field('needcurve');
+              $curve_type = get_sub_field('curve_type')
+                ? get_sub_field('curve_type')
+                : 'none';
+              $curve_color = get_sub_field('curve_color')
+                ? get_sub_field('curve_color')
+                : 'none';
               $column_size = get_sub_field('column_size');
               switch ($column_size) {
                 case 'small':
@@ -126,12 +146,68 @@ if (have_posts()) {
             }
           } ?>
 <section id="section_<?php echo $sec_id; ?>"
-    class="py-5 commsec bg-<?php echo $bg_color; ?> text-<?php echo $text_color; ?>">
+    class="py-5 commsec bg-<?php echo $bg_color; ?> text-<?php echo $text_color; ?> cloud<?php echo $curve_type; ?> <?php echo $curve_color; ?>">
     <div class="container">
         <div class="row justify-content-center">
             <div class="<?php echo $class; ?> text-<?php echo $text_align; ?>">
                 <?php
                 the_sub_field('contents');
+                if (have_rows('buttons')) {
+                  echo '<ul class="ctalist">';
+                  while (have_rows('buttons')) {
+                    the_row();
+                    if (get_sub_field('link') && get_sub_field('title')) { ?>
+                <li>
+                    <a href="<?php the_sub_field(
+                      'link'
+                    ); ?>" class="btn btn-<?php the_sub_field(
+  'color'
+); ?>"><?php the_sub_field('title'); ?></a>
+                </li>
+                <?php }
+                  }
+                  echo '</ul>';
+                }
+                ?>
+            </div>
+        </div>
+    </div>
+</section>
+<?php
+        }
+
+        if (get_row_layout() == 'faq_area') {
+          if (have_rows('styles')) {
+            while (have_rows('styles')) {
+              the_row();
+              $bg_color = get_sub_field('bg_color');
+              $text_color = get_sub_field('text_color');
+            }
+          } ?>
+<section id="section_<?php echo $sec_id; ?>"
+    class="faqsec commsec bg-<?php echo $bg_color; ?> text-<?php echo $text_color; ?>">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <?php
+                if (have_rows('faq_lists')) {
+                  $count = 0;
+                  while (have_rows('faq_lists')) {
+
+                    the_row();
+                    $count++;
+                    ?>
+                <div class="faqsec__inn <?php if ($count == 1) {
+                  echo 'active';
+                } ?>">
+                    <h3>Q: <?php the_sub_field('title'); ?></h3>
+                    <div class="faqsec__cont">
+                        <?php the_sub_field('faq_contents'); ?>
+                    </div>
+                </div>
+                <?php
+                  }
+                }
                 if (have_rows('buttons')) {
                   echo '<ul class="ctalist">';
                   while (have_rows('buttons')) {
@@ -461,13 +537,60 @@ if (have_posts()) {
               $text_color = get_sub_field('text_color');
               $text_align = get_sub_field('text_align');
               $curve_color = get_sub_field('curve_color');
+              $curve_position = get_sub_field('curve_position')
+                ? get_sub_field('curve_position')
+                : 'bottom';
             }
           } ?>
 <section id="section_<?php echo $sec_id; ?>"
-    class="aboutsec <?php echo $curve_color; ?> py-6 text-<?php echo $text_color; ?> bg-<?php echo $bg_color; ?>">
+    class="aboutsec <?php echo $curve_color; ?> <?php echo $curve_position; ?> py-6 text-<?php echo $text_color; ?> bg-<?php echo $bg_color; ?>">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10 col-lg-8 text-<?php echo $text_align; ?>">
+                <?php
+                the_sub_field('contents');
+                if (have_rows('buttons')) {
+                  echo '<ul class="ctalist">';
+                  while (have_rows('buttons')) {
+                    the_row();
+                    if (get_sub_field('link') && get_sub_field('title')) { ?>
+                <li>
+                    <a href="<?php the_sub_field(
+                      'link'
+                    ); ?>" class="btn btn-<?php the_sub_field(
+  'color'
+); ?>"><?php the_sub_field('title'); ?></a>
+                </li>
+                <?php }
+                  }
+                  echo '</ul>';
+                }
+                ?>
+            </div>
+        </div>
+    </div>
+</section>
+<?php
+        }
+
+        if (get_row_layout() == 'sponsors_gallery') {
+          if (have_rows('styles')) {
+            while (have_rows('styles')) {
+              the_row();
+              $bg_color = get_sub_field('bg_color');
+              $text_color = get_sub_field('text_color');
+              $text_align = get_sub_field('text_align');
+              $curve_color = get_sub_field('curve_color');
+              $curve_position = get_sub_field('curve_position')
+                ? get_sub_field('curve_position')
+                : 'bottom';
+            }
+          } ?>
+<section id="section_<?php echo $sec_id; ?>"
+    class="aboutsec sponsorgal <?php echo $curve_color; ?> <?php echo $curve_position; ?> py-6 text-<?php echo $text_color; ?> bg-<?php echo $bg_color; ?>">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 text-<?php echo $text_align; ?>">
                 <?php
                 the_sub_field('contents');
                 if (have_rows('buttons')) {

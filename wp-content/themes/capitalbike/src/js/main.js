@@ -6,6 +6,13 @@ $(document).ready(function () {
   $(".mainmenu__list li a").on("click", function (e) {
     $("body, .header, .mainmenu, .header__toggle").removeClass("menuactive");
   });
+  $(".faqsec__inn > h3").on("click", function (e) {
+    $(".faqsec__inn").removeClass("active");
+    $(this).parent().toggleClass("active");
+  });
+  $(".sponsorgal .gallery a").on("click", function (e) {
+    e.preventDefault();
+  });
   $(".scroll-down, .ctalist .btn[href*='#'], .pagebanner__down").on(
     "click",
     function (e) {
