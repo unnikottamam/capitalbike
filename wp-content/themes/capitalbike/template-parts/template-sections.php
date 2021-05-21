@@ -176,6 +176,74 @@ if (have_posts()) {
 <?php
         }
 
+        if (get_row_layout() == 'carousel_side_content') {
+          if (have_rows('styles')) {
+            while (have_rows('styles')) {
+              the_row();
+              $bg_color = get_sub_field('bg_color');
+              $text_color = get_sub_field('text_color');
+              $text_align = get_sub_field('text_align');
+              $needcurve = get_sub_field('needcurve');
+              $curve_type = get_sub_field('curve_type')
+                ? get_sub_field('curve_type')
+                : 'none';
+              $curve_color = get_sub_field('curve_color')
+                ? get_sub_field('curve_color')
+                : 'none';
+            }
+          } ?>
+<section id="section_<?php echo $sec_id; ?>"
+    class="py-5 commsec sidecarousel bg-<?php echo $bg_color; ?> text-<?php echo $text_color; ?> cloud<?php echo $curve_type; ?> <?php echo $curve_color; ?>">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-6 order-md-2 text-<?php echo $text_align; ?>">
+                <?php
+                the_sub_field('contents');
+                if (have_rows('buttons')) {
+                  echo '<ul class="ctalist">';
+                  while (have_rows('buttons')) {
+                    the_row();
+                    if (get_sub_field('link') && get_sub_field('title')) { ?>
+                <li>
+                    <a href="<?php the_sub_field(
+                      'link'
+                    ); ?>" class="btn btn-<?php the_sub_field(
+  'color'
+); ?>"><?php the_sub_field('title'); ?></a>
+                </li>
+                <?php }
+                  }
+                  echo '</ul>';
+                }
+                ?>
+            </div>
+            <div class="col-md-6 order-md-<?php the_sub_field(
+              'carousel_position'
+            ); ?>">
+                <?php if (have_rows('images')) {
+                  echo '<div class="sidecarousel__imgs">';
+                  while (have_rows('images')) {
+
+                    the_row();
+                    $image = get_sub_field('image');
+
+                    $src = aq_resize($image['url'], 540, 540, true, true, true);
+                    $alt = $image['alt'];
+                    ?>
+                <div class="sidecarousel__img">
+                    <img src="<?php echo $src; ?>" alt="<?php echo $alt; ?>" width="540" height="540">
+                </div>
+                <?php
+                  }
+                  echo '</div>';
+                } ?>
+            </div>
+        </div>
+    </div>
+</section>
+<?php
+        }
+
         if (get_row_layout() == 'faq_area') {
           if (have_rows('styles')) {
             while (have_rows('styles')) {
@@ -421,6 +489,85 @@ if (have_posts()) {
 </section>
 <?php }
 
+        if (get_row_layout() == 'post_slider_content') {
+
+          $circular_images = get_sub_field('circular_side_images');
+          $readmore = get_sub_field('post_read_more')
+            ? get_sub_field('post_read_more')
+            : 'Read More';
+          ?>
+<section id="section_<?php echo $sec_id; ?>" class="contslider postslider">
+    <?php
+    $buttn__cont = '';
+    if (have_rows('buttons')) {
+      while (have_rows('buttons')) {
+        the_row();
+        if (get_sub_field('link') && get_sub_field('title')) {
+          $buttn__cont .=
+            '<li>
+                  <a href="' .
+            get_sub_field('link') .
+            '" class="btn btn-' .
+            get_sub_field('color') .
+            '">' .
+            get_sub_field('title') .
+            '</a></li>';
+        }
+      }
+    }
+    $select_posts = get_sub_field('select_posts');
+    if ($select_posts) { ?>
+    <div class="contslider__slider">
+        <?php foreach ($select_posts as $post) {
+          setup_postdata($post); ?>
+        <div class="row postslider__slide justify-content-between d-flex">
+            <div class="col-lg-6 contslider__left py-6">
+                <div class="contslider__leftinn text-white">
+                    <h2><?php the_title(); ?></h2>
+                    <p>
+                        <?php echo wp_trim_words(
+                          get_the_excerpt(),
+                          30,
+                          '...'
+                        ); ?>
+                    </p>
+                </div>
+                <ul class="ctalist">
+                    <li>
+                        <a href="<?php the_permalink(); ?>" class="btn btn-primary"><?php echo $readmore; ?></a>
+                    </li>
+                    <?php echo $buttn__cont; ?>
+                </ul>
+            </div>
+            <div class="col-lg-6 contslider__right pt-5">
+                <div class="contslider__rightinn">
+                    <?php if (has_post_thumbnail()) {
+
+                      $image = get_the_post_thumbnail_url(get_the_ID(), 'full');
+                      $src = $circular_images
+                        ? aq_resize($image, 560, 560, true, true, true)
+                        : aq_resize($image, 610, 510, true, true, true);
+                      ?>
+                    <div class="contslider__slide">
+                        <img <?php echo $circular_images
+                          ? 'class="circleimg" width="560" height="560"'
+                          : 'width="610" height="510"'; ?> src="<?php echo $src; ?>"
+                            alt="<?php echo get_the_title(); ?>">
+                    </div>
+                    <?php
+                    } ?>
+                </div>
+            </div>
+        </div>
+        <?php
+        } ?>
+    </div>
+    <?php wp_reset_postdata();}
+    ?>
+</section>
+<?php
+        }
+
         if (get_row_layout() == 'parallax_area') { ?>
 <section id="section_<?php echo $sec_id; ?>" class="clouddesign text-white">
     <?php
@@ -493,7 +640,7 @@ if (have_posts()) {
 <?php get_template_part('template-parts/team', 'slider');}
 
         if (get_row_layout() == 'about_area') { ?>
-<section id="section_<?php echo $sec_id; ?>" class="aboutsec pt-6 text-white bg-darklight">
+<section id="section_<?php echo $sec_id; ?>" class="aboutsec pt-6 bottom text-white bg-darklight">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10 col-lg-8 text-center">

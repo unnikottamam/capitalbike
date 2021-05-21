@@ -449,6 +449,9 @@
       border-radius: 3rem;
     }
   }
+  .postslider__slide {
+    padding: 0 15px;
+  }
   .slick-dots {
     margin: 1rem 0 0;
   }
@@ -1101,7 +1104,13 @@
       padding-right: 0;
       margin-right: -3rem;
     }
-
+    &__slide {
+      img {
+        &.circleimg {
+          border-radius: 50%;
+        }
+      }
+    }
     .slick-dots {
       margin: 0;
       position: absolute;
@@ -1111,6 +1120,14 @@
       li {
         display: block;
         margin: 0.35rem 0;
+      }
+    }
+    &.postslider {
+      .postslider__slide {
+        padding: 0;
+      }
+      .slick-dots {
+        left: calc(50% + 6rem);
       }
     }
   }
