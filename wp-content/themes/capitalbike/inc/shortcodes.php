@@ -9,6 +9,7 @@ function register_shortcodes()
   add_shortcode('social-media', 'shortcode_social_media');
   add_shortcode('contact-list', 'shortcode_contact_list');
   add_shortcode('location-info', 'shortcode_location_info');
+  add_shortcode('button', 'shortcode_button');
 }
 add_action('init', 'register_shortcodes');
 
@@ -97,4 +98,41 @@ function shortcode_location_info()
     $html .= '</ul>';
   }
   return $html;
+}
+
+/**
+ * Button Shortcode Callback
+ */
+// Add Shortcode
+function shortcode_button($atts, $content = null)
+{
+  extract(
+    shortcode_atts(
+      [
+        'url' => '',
+        'class' => 'secondary',
+        'text' => 'Read More',
+      ],
+      $atts
+    )
+  );
+  $content = $text ? $text : "Read More";
+  if ($url) {
+    $link_attr = [
+      'href' => esc_url($url),
+    ];
+    $link_attrs_str = '';
+    foreach ($link_attr as $key => $val) {
+      if ($val) {
+        $link_attrs_str .= ' ' . $key . '="' . $val . '"';
+      }
+    }
+    return '<a' .
+      $link_attrs_str .
+      ' class="btn btn-' .
+      $class .
+      '">' .
+      $content .
+      '</a>';
+  }
 }

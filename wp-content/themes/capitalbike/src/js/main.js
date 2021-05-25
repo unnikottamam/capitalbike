@@ -66,6 +66,14 @@ $(document).ready(function () {
     dots: true
   });
 
+  $(".contentslider__slider").slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: true,
+    autoplay: false,
+    dots: false
+  });
+
   $(".brands__slider").slick({
     slidesToShow: 3,
     slidesToScroll: 1,

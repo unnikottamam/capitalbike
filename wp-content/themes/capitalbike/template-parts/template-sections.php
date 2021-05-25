@@ -157,7 +157,9 @@ if (have_posts()) {
                   while (have_rows('buttons')) {
                     the_row();
                     if (get_sub_field('link') && get_sub_field('title')) { ?>
-                <li>
+                <li <?php if (get_sub_field('button_type') == 'block') {
+                  echo 'class="ctalist__block"';
+                } ?>>
                     <a href="<?php the_sub_field(
                       'link'
                     ); ?>" class="btn btn-<?php the_sub_field(
@@ -196,7 +198,7 @@ if (have_posts()) {
     class="py-5 commsec sidecarousel bg-<?php echo $bg_color; ?> text-<?php echo $text_color; ?> cloud<?php echo $curve_type; ?> <?php echo $curve_color; ?>">
     <div class="container">
         <div class="row justify-content-center align-items-center">
-            <div class="col-md-6 order-md-2 text-<?php echo $text_align; ?>">
+            <div class="col-lg-6 order-lg-2 text-<?php echo $text_align; ?>">
                 <?php
                 the_sub_field('contents');
                 if (have_rows('buttons')) {
@@ -217,7 +219,7 @@ if (have_posts()) {
                 }
                 ?>
             </div>
-            <div class="col-md-6 order-md-<?php the_sub_field(
+            <div class="col-lg-6 order-lg-<?php the_sub_field(
               'carousel_position'
             ); ?>">
                 <?php if (have_rows('images')) {
@@ -236,6 +238,199 @@ if (have_posts()) {
                 <?php
                   }
                   echo '</div>';
+                } ?>
+            </div>
+        </div>
+    </div>
+</section>
+<?php
+        }
+
+        if (get_row_layout() == 'thumbnails_cta_area') {
+          if (have_rows('styles')) {
+            while (have_rows('styles')) {
+              the_row();
+              $bg_color = get_sub_field('bg_color');
+              $text_color = get_sub_field('text_color');
+              $text_align = get_sub_field('text_align');
+              $needcurve = get_sub_field('needcurve');
+              $curve_type = get_sub_field('curve_type')
+                ? get_sub_field('curve_type')
+                : 'none';
+              $curve_color = get_sub_field('curve_color')
+                ? get_sub_field('curve_color')
+                : 'none';
+              $column_size = get_sub_field('column_size');
+              switch ($column_size) {
+                case 'small':
+                  $class = "col-md-6 col-lg-5";
+                  break;
+                case 'medium':
+                  $class = "col-md-9 col-lg-7";
+                  break;
+                case 'large':
+                  $class = "col-md-11 col-lg-10";
+                  break;
+
+                default:
+                  $class = "col-12";
+                  break;
+              }
+            }
+          } ?>
+<section id="section_<?php echo $sec_id; ?>"
+    class="py-5 commsec thumbnailscta bg-<?php echo $bg_color; ?> text-<?php echo $text_color; ?> cloud<?php echo $curve_type; ?> <?php echo $curve_color; ?>">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="<?php echo $class; ?> text-<?php echo $text_align; ?>">
+                <?php the_sub_field('contents'); ?>
+            </div>
+            <div class="col-12">
+                <?php if (have_rows('thumbnails')) {
+                  echo '<div class="row thumbnailscta__list">';
+                  while (have_rows('thumbnails')) {
+
+                    the_row();
+                    $type = get_sub_field('type');
+                    ?>
+                <div class="col-md-6 col-12 thumbnailscta__item">
+                    <?php $class =
+                      $type == 'image'
+                        ? 'thumbnailscta__image'
+                        : 'thumbnailscta__cont'; ?>
+                    <div class="thumbnailscta__inn <?php echo $class; ?>">
+                        <?php
+                        echo get_sub_field('link')
+                          ? '<a href="' .
+                            get_sub_field('link') .
+                            '"><span class="sr-only">Read More</span></a>'
+                          : '';
+                        if ($type == 'image' && get_sub_field('image')) {
+
+                          $image = get_sub_field('image');
+
+                          $src = aq_resize(
+                            $image['url'],
+                            500,
+                            386,
+                            true,
+                            true,
+                            true
+                          );
+                          $alt = $image['alt'];
+                          ?>
+                        <img src="<?php echo $src; ?>" alt="<?php echo $alt; ?>" width="540" height="540">
+                        <div class="thumbnailscta__imginn text-white">
+                            <?php
+                            echo '<h2>' . get_sub_field('title') . '</h2>';
+                            echo '<p>' . get_sub_field('sub_title') . '</p>';
+                            ?>
+                        </div>
+                        <?php
+                        } else {
+                          the_sub_field('content');
+                        }
+                        ?>
+                    </div>
+                </div>
+                <?php
+                  }
+                  echo '</div>';
+                } ?>
+            </div>
+            <div class="<?php echo $class; ?> text-<?php echo $text_align; ?>">
+                <?php if (have_rows('buttons')) {
+                  echo '<ul class="ctalist">';
+                  while (have_rows('buttons')) {
+                    the_row();
+                    if (get_sub_field('link') && get_sub_field('title')) { ?>
+                <li>
+                    <a href="<?php the_sub_field(
+                      'link'
+                    ); ?>" class="btn btn-<?php the_sub_field(
+  'color'
+); ?>"><?php the_sub_field('title'); ?></a>
+                </li>
+                <?php }
+                  }
+                  echo '</ul>';
+                } ?>
+            </div>
+        </div>
+    </div>
+</section>
+<?php
+        }
+
+        if (get_row_layout() == 'content_slider_section') {
+          if (have_rows('styles')) {
+            while (have_rows('styles')) {
+              the_row();
+              $bg_color = get_sub_field('bg_color');
+              $text_color = get_sub_field('text_color');
+              $text_align = get_sub_field('text_align');
+              $needcurve = get_sub_field('needcurve');
+              $curve_type = get_sub_field('curve_type')
+                ? get_sub_field('curve_type')
+                : 'none';
+              $curve_color = get_sub_field('curve_color')
+                ? get_sub_field('curve_color')
+                : 'none';
+              $column_size = get_sub_field('column_size');
+              switch ($column_size) {
+                case 'small':
+                  $class = "col-md-6 col-lg-5";
+                  break;
+                case 'medium':
+                  $class = "col-md-9 col-lg-7";
+                  break;
+                case 'large':
+                  $class = "col-md-11 col-lg-10";
+                  break;
+
+                default:
+                  $class = "col-12";
+                  break;
+              }
+            }
+          } ?>
+<section id="section_<?php echo $sec_id; ?>"
+    class="py-5 commsec contentslider bg-<?php echo $bg_color; ?> text-<?php echo $text_color; ?> cloud<?php echo $curve_type; ?> <?php echo $curve_color; ?>">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-12">
+                <?php if (have_rows('slider_contents')) {
+                  echo '<div class="contentslider__slider">';
+                  while (have_rows('slider_contents')) {
+                    the_row(); ?>
+                <div class="contentslider__slides">
+                    <div class="row justify-content-center">
+                        <div class="<?php echo $class; ?> text-<?php echo $text_align; ?>">
+                            <?php the_sub_field('content'); ?>
+                        </div>
+                    </div>
+                </div>
+                <?php
+                  }
+                  echo '</div>';
+                } ?>
+            </div>
+            <div class="<?php echo $class; ?> text-<?php echo $text_align; ?>">
+                <?php if (have_rows('buttons')) {
+                  echo '<ul class="ctalist">';
+                  while (have_rows('buttons')) {
+                    the_row();
+                    if (get_sub_field('link') && get_sub_field('title')) { ?>
+                <li>
+                    <a href="<?php the_sub_field(
+                      'link'
+                    ); ?>" class="btn btn-<?php the_sub_field(
+  'color'
+); ?>"><?php the_sub_field('title'); ?></a>
+                </li>
+                <?php }
+                  }
+                  echo '</ul>';
                 } ?>
             </div>
         </div>

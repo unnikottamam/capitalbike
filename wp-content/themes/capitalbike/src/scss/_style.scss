@@ -66,6 +66,13 @@ button:focus {
     &:last-child {
       margin-right: 0;
     }
+    &.ctalist__block {
+      margin: 0.5rem 0 !important;
+      display: block;
+      .btn {
+        min-width: 58%;
+      }
+    }
   }
 }
 
