@@ -55,7 +55,7 @@ if (have_rows('page_banner')) {
                   }
                   echo '</ul>';
                 } else {
-                  ?>
+                   ?>
                 <a href="#section_2" class="pagebanner__down">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
                         <path
@@ -79,7 +79,7 @@ if (have_rows('page_banner')) {
         <div class="row justify-content-center">
             <div class="col-md-8 text-center pb-5">
                 <h2><?php the_title(); ?></h2>
-                <?php if(get_field('sub_title')) { ?>
+                <?php if (get_field('sub_title')) { ?>
                 <p><?php the_field('sub_title'); ?></p>
                 <?php } ?>
             </div>
