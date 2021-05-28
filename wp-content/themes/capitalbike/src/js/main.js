@@ -10,6 +10,15 @@ $(document).ready(function () {
     $(".faqsec__inn").removeClass("active");
     $(this).parent().toggleClass("active");
   });
+  $(".mainmenu__list>li.menu-item-has-children").append("<span></span>");
+  $(".mainmenu__list>li span").on("click", function (e) {
+    if ($(this).parent().hasClass("dropactive")) {
+      $(".mainmenu__list>li").removeClass("dropactive");
+    } else {
+      $(".mainmenu__list>li").removeClass("dropactive");
+      $(this).parent().addClass("dropactive");
+    }
+  });
   $(".sponsorgal .gallery a").on("click", function (e) {
     e.preventDefault();
   });

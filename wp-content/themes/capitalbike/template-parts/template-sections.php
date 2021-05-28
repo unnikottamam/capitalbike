@@ -120,7 +120,7 @@ if (have_posts()) {
               $bg_color = get_sub_field('bg_color');
               $text_color = get_sub_field('text_color');
               $text_align = get_sub_field('text_align');
-              $needcurve = get_sub_field('needcurve');
+              $needcurve = get_sub_field('need_curve_layer');
               $curve_type = get_sub_field('curve_type')
                 ? get_sub_field('curve_type')
                 : 'none';
@@ -145,8 +145,10 @@ if (have_posts()) {
               }
             }
           } ?>
-<section id="section_<?php echo $sec_id; ?>"
-    class="py-5 commsec bg-<?php echo $bg_color; ?> text-<?php echo $text_color; ?> cloud<?php echo $curve_type; ?> <?php echo $curve_color; ?>">
+<section id="section_<?php echo $sec_id; ?>" class="py-5 commsec bg-<?php echo $bg_color; ?> text-<?php
+ echo $text_color;
+ if ($needcurve) { ?> cloud<?php echo $curve_type;}
+ ?> <?php echo $curve_color; ?>">
     <div class="container">
         <div class="row justify-content-center">
             <div class="<?php echo $class; ?> text-<?php echo $text_align; ?>">
@@ -185,7 +187,7 @@ if (have_posts()) {
               $bg_color = get_sub_field('bg_color');
               $text_color = get_sub_field('text_color');
               $text_align = get_sub_field('text_align');
-              $needcurve = get_sub_field('needcurve');
+              $needcurve = get_sub_field('need_curve_layer');
               $curve_type = get_sub_field('curve_type')
                 ? get_sub_field('curve_type')
                 : 'none';
@@ -194,8 +196,10 @@ if (have_posts()) {
                 : 'none';
             }
           } ?>
-<section id="section_<?php echo $sec_id; ?>"
-    class="py-5 commsec sidecarousel bg-<?php echo $bg_color; ?> text-<?php echo $text_color; ?> cloud<?php echo $curve_type; ?> <?php echo $curve_color; ?>">
+<section id="section_<?php echo $sec_id; ?>" class="py-5 commsec sidecarousel bg-<?php echo $bg_color; ?> text-<?php
+ echo $text_color;
+ if ($needcurve) { ?> cloud<?php echo $curve_type;}
+ ?> <?php echo $curve_color; ?>">
     <div class="container">
         <div class="row justify-content-center align-items-center">
             <div class="col-lg-6 order-lg-2 text-<?php echo $text_align; ?>">
@@ -253,7 +257,7 @@ if (have_posts()) {
               $bg_color = get_sub_field('bg_color');
               $text_color = get_sub_field('text_color');
               $text_align = get_sub_field('text_align');
-              $needcurve = get_sub_field('needcurve');
+              $needcurve = get_sub_field('need_curve_layer');
               $curve_type = get_sub_field('curve_type')
                 ? get_sub_field('curve_type')
                 : 'none';
@@ -278,8 +282,10 @@ if (have_posts()) {
               }
             }
           } ?>
-<section id="section_<?php echo $sec_id; ?>"
-    class="py-5 commsec thumbnailscta bg-<?php echo $bg_color; ?> text-<?php echo $text_color; ?> cloud<?php echo $curve_type; ?> <?php echo $curve_color; ?>">
+<section id="section_<?php echo $sec_id; ?>" class="py-5 commsec thumbnailscta bg-<?php echo $bg_color; ?> text-<?php
+ echo $text_color;
+ if ($needcurve) { ?> cloud<?php echo $curve_type;}
+ ?> <?php echo $curve_color; ?>">
     <div class="container">
         <div class="row justify-content-center align-items-center">
             <div class="<?php echo $class; ?> text-<?php echo $text_align; ?>">
@@ -369,7 +375,7 @@ if (have_posts()) {
               $bg_color = get_sub_field('bg_color');
               $text_color = get_sub_field('text_color');
               $text_align = get_sub_field('text_align');
-              $needcurve = get_sub_field('needcurve');
+              $needcurve = get_sub_field('need_curve_layer');
               $curve_type = get_sub_field('curve_type')
                 ? get_sub_field('curve_type')
                 : 'none';
@@ -394,8 +400,10 @@ if (have_posts()) {
               }
             }
           } ?>
-<section id="section_<?php echo $sec_id; ?>"
-    class="py-5 commsec contentslider bg-<?php echo $bg_color; ?> text-<?php echo $text_color; ?> cloud<?php echo $curve_type; ?> <?php echo $curve_color; ?>">
+<section id="section_<?php echo $sec_id; ?>" class="py-5 commsec contentslider bg-<?php echo $bg_color; ?> text-<?php
+ echo $text_color;
+ if ($needcurve) { ?> cloud<?php echo $curve_type;}
+ ?> <?php echo $curve_color; ?>">
     <div class="container">
         <div class="row justify-content-center align-items-center">
             <div class="col-12">
@@ -620,6 +628,94 @@ if (have_posts()) {
 </section>
 <?php }
 
+        if (get_row_layout() == 'post_slider') {
+
+          $term = get_sub_field('select_post_category');
+          $num = get_sub_field('post_number')
+            ? get_sub_field('post_number')
+            : 3;
+          ?>
+
+<section id="section_<?php echo $sec_id; ?>" class="eventsec">
+    <div class="container-fluid p-0">
+        <?php
+        $buttons = '';
+        if (have_rows('buttons')) {
+          while (have_rows('buttons')) {
+            the_row();
+            if (get_sub_field('link') && get_sub_field('title')) {
+              $buttons .=
+                '<li><a href="' .
+                get_sub_field('link') .
+                '" class="btn btn-' .
+                get_sub_field('color') .
+                '">' .
+                get_sub_field('title') .
+                '</a></li>';
+            }
+          }
+        }
+        $args = [
+          'post_type' => 'post',
+          'posts_per_page' => $num,
+          'cat' => $term->term_id,
+        ];
+        query_posts($args);
+        if (have_posts()) {
+          echo '<div class="eventsec__slider bg-primary">';
+          while (have_posts()) {
+
+            echo '<div class="row justify-content-between d-flex">';
+
+            the_post();
+            if (has_post_thumbnail()) {
+
+              $src = aq_resize(
+                get_the_post_thumbnail_url(get_the_ID(), 'full'),
+                540,
+                540,
+                true,
+                true,
+                true
+              );
+              $alt = get_the_title();
+              ?>
+        <div class="col-lg-6 text-lg-right eventsec__left">
+            <div class="eventsec__leftinn">
+                <div class="eventsec__slide">
+                    <div class="eventsec__slideimg">
+                        <img src="<?php echo $src; ?>" alt="<?php echo $alt; ?>" width="540" height="540">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php
+            }
+            ?>
+        <div class="col-lg-5 eventsec__right pt-lg-6 bg-primary">
+            <h2><?php the_title(); ?></h2>
+            <p>
+                <?php echo wp_trim_words(
+                  get_the_excerpt(get_the_ID()),
+                  40,
+                  '...'
+                ); ?>
+            </p>
+            <ul class="ctalist">
+                <li><a href="<?php the_permalink(); ?>" class="btn btn-dark">Learn More</a></li>
+                <?php echo $buttons; ?>
+            </ul>
+        </div>
+        <?php echo '</div>';
+          }
+          echo '</div>';
+        }
+        wp_reset_query();
+        ?>
+    </div>
+</section>
+<?php
+        }
         if (get_row_layout() == 'content_sideslider') { ?>
 <section id="section_<?php echo $sec_id; ?>" class="contslider">
     <div class="container-fluid">
@@ -683,7 +779,6 @@ if (have_posts()) {
     </div>
 </section>
 <?php }
-
         if (get_row_layout() == 'post_slider_content') {
 
           $circular_images = get_sub_field('circular_side_images');
@@ -762,7 +857,6 @@ if (have_posts()) {
 </section>
 <?php
         }
-
         if (get_row_layout() == 'parallax_area') { ?>
 <section id="section_<?php echo $sec_id; ?>" class="clouddesign text-white">
     <?php
@@ -803,7 +897,6 @@ if (have_posts()) {
     </div>
 </section>
 <?php }
-
         if (get_row_layout() == 'team_area') { ?>
 <section id="section_<?php echo $sec_id; ?>" class="py-5 commsec">
     <div class="container">
@@ -833,7 +926,6 @@ if (have_posts()) {
     </div>
 </section>
 <?php get_template_part('template-parts/team', 'slider');}
-
         if (get_row_layout() == 'about_area') { ?>
 <section id="section_<?php echo $sec_id; ?>" class="aboutsec pt-6 bottom text-white bg-darklight">
     <div class="container">
@@ -863,14 +955,12 @@ if (have_posts()) {
     </div>
 </section>
 <?php }
-
         if (get_row_layout() == 'horizontal_line') { ?>
 <section id="section_<?php echo $sec_id; ?>" class="horizline text-<?php echo get_sub_field(
   'color'
 ); ?> bg-<?php echo get_sub_field('bg_color'); ?>">
 </section>
 <?php }
-
         if (get_row_layout() == 'curve_bg_content_area') {
           if (have_rows('styles')) {
             while (have_rows('styles')) {
@@ -914,7 +1004,6 @@ if (have_posts()) {
 </section>
 <?php
         }
-
         if (get_row_layout() == 'sponsors_gallery') {
           if (have_rows('styles')) {
             while (have_rows('styles')) {
@@ -958,7 +1047,6 @@ if (have_posts()) {
 </section>
 <?php
         }
-
         if (get_row_layout() == 'sponsors') { ?>
 <section id="section_<?php echo $sec_id; ?>" class="py-5 commsec">
     <div class="container">
@@ -1017,7 +1105,6 @@ if (have_posts()) {
     </div>
 </section>
 <?php }
-
         if (get_row_layout() == 'contact_info_blocks') {
           if (have_rows('styles')) {
             while (have_rows('styles')) {
@@ -1036,7 +1123,6 @@ if (have_posts()) {
 </section>
 <?php
         }
-
         if (get_row_layout() == 'newsletter') {
           if (have_rows('styles')) {
             while (have_rows('styles')) {
