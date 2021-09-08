@@ -51,11 +51,6 @@ while (have_posts()) {
     <div class="container">
         <div class="row align-items-end">
             <div class="col-md-6 text-center text-md-left">
-                <h2 class="mb-1">
-                    <?php echo get_the_author_meta('first_name') .
-                      " " .
-                      get_the_author_meta('last_name'); ?>
-                </h2>
                 <p><?php echo get_the_date(); ?></p>
             </div>
             <div class="col-md-6 text-center text-md-right">

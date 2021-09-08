@@ -1,0 +1,96 @@
+.load-more {
+	margin-bottom: 50px!important;
+}
+
+.footer.bg-dark {
+	margin: 0;
+}
+
+.footer.bg-dark:before {
+	background-image: none;
+}
+
+select {
+	word-wrap: normal;
+	display: block;
+	width: 100%;
+	height: 3.2rem;
+	padding: .375rem 1.5rem;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #495057;
+	background-color: #fff;
+	background-clip: padding-box;
+	border: 1px solid rgba(4,36,55,.15);
+	border-radius: 3rem;
+	transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+	margin: 0 0 16px;
+}
+
+.no-results {
+	padding-top: 5vw;
+	padding-bottom: 5vw;
+	text-align: center;
+}
+
+.cloudboth::before, .cloudtop::before {
+	background-image: url("./images/white-wave-before.svg");
+}
+
+.cloudboth::after, .cloudbtm::after {
+	background-image: url("./images/white-wave-after.svg");
+}
+
+.cloudboth.primary::before, .cloudtop.primary::before {
+	background-image: url("./images/yellow-wave-before.svg");
+}
+
+.cloudboth.primary::after, .cloudbtm.primary::after {
+	background-image: url("./images/yellow-wave-after.svg");
+}
+
+.cloudboth.secondary::before, .cloudtop.secondary::before {
+	background-image: url("./images/red-wave-before.svg");
+}
+
+.cloudboth.secondary::after, .cloudbtm.secondary::after {
+	background-image: url("./images/red-wave-after.svg");
+}
+
+.cloudboth.light::before, .cloudtop.light::before {
+	background-image: url("./images/light-red-wave-before.svg");
+}
+
+.cloudboth.light::after, .cloudbtm.light::after {
+	background-image: url("./images/light-red-wave-after.svg");
+}
+
+.cloudboth.darklight::before, .cloudtop.darklight::before {
+	background-image: url("./images/light-blue-wave-before.svg");
+}
+
+.cloudboth.darklight::after, .cloudbtm.darklight::after {
+	background-image: url("./images/light-blue-wave-after.svg");
+}
+
+.cloudboth.dark::before, .cloudtop.dark::before {
+	background-image: url("./images/blue-wave-before.svg");
+}
+
+.cloudboth.dark::after, .cloudbtm.dark::after {
+	background-image: url("./images/blue-wave-after.svg");
+}
+
+.insta {
+	position: relative;
+	overflow: hidden;
+}
+
+@media screen and (max-width: 768px) {
+	.nomobile {
+		display: none;
+	}
+}
+
+

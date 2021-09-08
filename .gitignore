@@ -15,13 +15,14 @@ wp-content/plugins/hello.php
 wp-content/themes/twenty*/
 
 # ignore node dependency directories
+.vscode
 node_modules/
+dist/
 
 # ignore log files and databases
 *.log
 *.sql
 *.sqlite
 
-.vscode
 .DS_Store
 package-lock.json

@@ -147,6 +147,19 @@ function capitalbike_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'capitalbike_scripts' );
 
+function load_js() {
+	wp_register_script('javascript', get_template_directory_uri() . '/js/autorotate.js', array(), false, true );
+	wp_enqueue_script('javascript');
+}
+add_action('wp_enqueue_scripts', 'load_js');
+
+// added foe.css to override CSS created by the bundler.
+function load_css() {
+	wp_register_style('stylesheet', get_template_directory_uri() . '/foe.css', array(), false, 'all');
+	wp_enqueue_style('stylesheet');
+}
+add_action('wp_enqueue_scripts', 'load_css');
+
 /**
  * Implement the Custom Header feature.
  */
