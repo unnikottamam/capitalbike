@@ -23,8 +23,8 @@ get_template_part('template-parts/section', 'start', [
     </div>
 </div>
 <?php
-if (get_sub_field('side_image')) {
-    $image = get_sub_field('side_image');
+if (get_field('side_image')) {
+    $image = get_field('side_image');
     $src = $image['url']; ?>
 <div class="banner__side d-none d-lg-block" style="background-image: url('<?php echo $src; ?>');"></div>
 <?php }

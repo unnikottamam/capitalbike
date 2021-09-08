@@ -10,18 +10,13 @@ if (have_rows('buttons')) {
   while (have_rows('buttons')) {
     the_row();
     if (get_sub_field('link') && get_sub_field('title')) {
-
       $link = get_sub_field('link');
-      $link_url = $link['url'];
-      $link_title = $link['title'];
-      $link_target = $link['target'] ? $link['target'] : '_self';
+      $link_title = get_sub_field('title');
       ?>
 <li>
-    <a href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr(
-  $link_target
-); ?>" class="btn btn-<?php the_sub_field('color'); ?>"><?php echo esc_html(
-  $link_title
-); ?></a>
+    <a href="<?php echo $link; ?>" class="btn btn-<?php the_sub_field('color'); ?>">
+        <?php echo $link_title; ?>
+    </a>
 </li>
 <?php
     }
