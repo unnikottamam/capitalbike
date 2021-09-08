@@ -47,7 +47,7 @@ get_template_part('template-parts/section', 'start', [
 <div class="container">
     <div class="row justify-content-center align-items-center">
         <div class="<?php echo $class; ?> text-<?php echo $text_align; ?>">
-            <?php the_sub_field('contents'); ?>
+            <?php the_field('contents'); ?>
         </div>
         <div class="col-12">
             <?php if (have_rows('thumbnails')) {

@@ -45,7 +45,7 @@ get_template_part('template-parts/section', 'start', [
         </div>
         <div class="col-lg-5 eventsec__right pt-lg-6">
             <?php
-            the_sub_field('contents');
+            the_field('contents');
             get_template_part('template-parts/cta', 'buttons');
             ?>
         </div>

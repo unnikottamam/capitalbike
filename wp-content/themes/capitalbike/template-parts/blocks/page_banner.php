@@ -8,13 +8,13 @@
  * @param   (int|string) $post_id The post ID this block is saved to.
  */
 
-$cloud_color = get_sub_field('cloud_color');
-$overlay = get_sub_field('overlay_type');
+$cloud_color = get_field('cloud_color');
+$overlay = get_field('overlay_type');
 get_template_part('template-parts/section', 'start', [
     'class' => "pagebanner text-white cloud$overlay $cloud_color",
 ]);
-if (get_sub_field('bg_image')) {
-    $image = get_sub_field('bg_image');
+if (get_field('bg_image')) {
+    $image = get_field('bg_image');
     $src = aq_resize($image['url'], 1366, 768, true, true, true);
     $alt = $image['alt'] ? $image['alt'] : get_the_title();
     ?>

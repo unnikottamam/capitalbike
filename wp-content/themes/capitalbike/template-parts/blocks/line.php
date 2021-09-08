@@ -8,8 +8,8 @@
  * @param   (int|string) $post_id The post ID this block is saved to.
  */
 
-$text_color = get_sub_field('color');
-$bg_color = get_sub_field('bg_color');
+$text_color = get_field('color');
+$bg_color = get_field('bg_color');
 get_template_part('template-parts/section', 'start', [
   'class' => "horizline text-$text_color bg-$bg_color",
 ]);

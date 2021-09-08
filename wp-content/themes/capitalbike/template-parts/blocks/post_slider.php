@@ -8,9 +8,9 @@
  * @param   (int|string) $post_id The post ID this block is saved to.
  */
 
-$term = get_sub_field('select_post_category');
-$num = get_sub_field('post_number')
-  ? get_sub_field('post_number')
+$term = get_field('select_post_category');
+$num = get_field('post_number')
+  ? get_field('post_number')
   : 3;
 get_template_part('template-parts/section', 'start', [
   'class' => "eventsec",

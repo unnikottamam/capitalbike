@@ -16,7 +16,7 @@ get_template_part('template-parts/section', 'start', [
     <div class="row justify-content-center">
         <div class="col-md-10 col-lg-8 text-center">
             <?php
-            the_sub_field('contents');
+            the_field('contents');
             get_template_part('template-parts/cta', 'buttons');
             ?>
         </div>

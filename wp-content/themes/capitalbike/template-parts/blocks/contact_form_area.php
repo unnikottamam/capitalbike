@@ -39,13 +39,13 @@ get_template_part('template-parts/section', 'start', [
     <div class="row justify-content-center">
         <div class="<?php echo $class; ?> text-<?php echo $text_align; ?>">
             <?php
-            the_sub_field('contents');
+            the_field('contents');
             get_template_part('template-parts/cta', 'buttons');
             ?>
         </div>
-        <?php if (get_sub_field('form_shortcode')) { ?>
+        <?php if (get_field('form_shortcode')) { ?>
         <div class="col-md-10 contactarea__form">
-            <?php echo do_shortcode(get_sub_field("form_shortcode")); ?>
+            <?php echo do_shortcode(get_field("form_shortcode")); ?>
         </div>
         <?php } ?>
     </div>

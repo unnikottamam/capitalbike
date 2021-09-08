@@ -32,18 +32,18 @@ get_template_part('template-parts/section', 'start', [
     <div class="row justify-content-center align-items-center">
         <div class="col-lg-6 order-lg-2 text-<?php echo $text_align; ?>">
             <?php
-            the_sub_field('contents');
+            the_field('contents');
             get_template_part('template-parts/cta', 'buttons');
             ?>
         </div>
-        <div class="col-lg-6 order-lg-<?php the_sub_field(
+        <div class="col-lg-6 order-lg-<?php the_field(
               'carousel_position'
             ); ?>">
             <?php if (have_rows('images')) {
                 echo '<div class="sidecarousel__imgs">';
                 while (have_rows('images')) {
                 the_row();
-                $image = get_sub_field('image');
+                $image = get_field('image');
                 $src = aq_resize($image['url'], 540, 540, true, true, true);
                 $alt = $image['alt'];
                 ?>

@@ -16,7 +16,7 @@ get_template_part('template-parts/section', 'start', [
     <div class="row justify-content-between">
         <div class="col-lg-6 contslider__left py-6">
             <div class="contslider__leftinn text-white">
-                <?php the_sub_field('contents'); ?>
+                <?php the_field('contents'); ?>
             </div>
             <?php get_template_part('template-parts/cta', 'buttons'); ?>
         </div>

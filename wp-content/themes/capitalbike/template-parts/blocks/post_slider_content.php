@@ -8,8 +8,8 @@
  * @param   (int|string) $post_id The post ID this block is saved to.
  */
 
-$circular_images = get_sub_field('circular_side_images');
-$readmore = get_sub_field('post_read_more') ? get_sub_field('post_read_more') : 'Read More';
+$circular_images = get_field('circular_side_images');
+$readmore = get_field('post_read_more') ? get_field('post_read_more') : 'Read More';
 get_template_part('template-parts/section', 'start', [
   'class' => "contslider postslider",
 ]);
@@ -30,7 +30,7 @@ if (have_rows('buttons')) {
         }
     }
 }
-$select_posts = get_sub_field('select_posts');
+$select_posts = get_field('select_posts');
 if ($select_posts) { ?>
 <div class="contslider__slider">
     <?php foreach ($select_posts as $post) {

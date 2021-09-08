@@ -12,8 +12,8 @@ get_template_part('template-parts/section', 'start', [
   'class' => "clouddesign text-white",
 ]);
 
-if (get_sub_field('bg_image')) {
-    $image = get_sub_field('bg_image');
+if (get_field('bg_image')) {
+    $image = get_field('bg_image');
     $src = $image['url'];
     $alt = $image['alt'];
     ?>
@@ -26,7 +26,7 @@ if (get_sub_field('bg_image')) {
 <div class="container">
     <div class="clouddesign__cont">
         <?php
-        the_sub_field('contents');
+        the_field('contents');
         get_template_part('template-parts/cta', 'buttons');
         ?>
     </div>
