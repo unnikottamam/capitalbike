@@ -15,7 +15,6 @@ wp-content/plugins/hello.php
 wp-content/themes/twenty*/
 
 # ignore node dependency directories
-.vscode
 node_modules/
 dist/
 

@@ -43,7 +43,7 @@ get_template_part('template-parts/section', 'start', [
                 echo '<div class="sidecarousel__imgs">';
                 while (have_rows('images')) {
                 the_row();
-                $image = get_field('image');
+                $image = get_sub_field('image');
                 $src = aq_resize($image['url'], 540, 540, true, true, true);
                 $alt = $image['alt'];
                 ?>

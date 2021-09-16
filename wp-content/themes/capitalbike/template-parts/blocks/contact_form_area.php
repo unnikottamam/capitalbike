@@ -43,9 +43,9 @@ get_template_part('template-parts/section', 'start', [
             get_template_part('template-parts/cta', 'buttons');
             ?>
         </div>
-        <?php if (get_field('form_shortcode')) { ?>
+        <?php if (get_field('form_short_code')) { ?>
         <div class="col-md-10 contactarea__form">
-            <?php echo do_shortcode(get_field("form_shortcode")); ?>
+            <?php echo do_shortcode(get_field("form_short_code")); ?>
         </div>
         <?php } ?>
     </div>
