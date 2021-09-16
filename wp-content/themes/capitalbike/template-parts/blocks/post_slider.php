@@ -37,7 +37,7 @@ get_template_part('template-parts/section', 'start', [
     $args = [
         'post_type' => 'post',
         'posts_per_page' => $num,
-        'cat' => $term->term_id,
+        'cat' => $term,
     ];
     query_posts($args);
     if (have_posts()) {

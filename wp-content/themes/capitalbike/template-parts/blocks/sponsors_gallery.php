@@ -15,13 +15,13 @@ if (have_rows('styles')) {
         $text_color = get_sub_field('text_color');
         $text_align = get_sub_field('text_align');
         $curve_color = get_sub_field('curve_color');
-        $curve_position = get_sub_field('curve_position')
-        ? get_sub_field('curve_position')
+        $curve_type = get_sub_field('curve_type')
+        ? get_sub_field('curve_type')
         : 'bottom';
     }
 }
 get_template_part('template-parts/section', 'start', [
-  'class' => "aboutsec sponsorgal $curve_color $curve_position py-6 text-$text_color bg-$bg_color",
+  'class' => "aboutsec sponsorgal $curve_color $curve_type py-6 text-$text_color bg-$bg_color",
 ]);
 ?>
 <div class="container">

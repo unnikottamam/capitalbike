@@ -113,7 +113,7 @@ function my_acf_init_block_types()
       'name' => 'post-slider-content',
       'title' => __('Post Slider With Content Block'),
       'description' => __('Post Slider With Content Block.'),
-      'render_template' => 'template-parts/blocks/post_slider.php',
+      'render_template' => 'template-parts/blocks/post_slider_content.php',
       'category' => 'layout ',
       'icon' => 'edit-page',
       'keywords' => ['post-slider-content'],

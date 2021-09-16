@@ -14,7 +14,7 @@ if (have_rows('styles')) {
         $bg_color = get_sub_field('bg_color');
         $text_color = get_sub_field('text_color');
         $text_align = get_sub_field('text_align');
-        $needcurve = get_sub_field('need_curve_layer');
+        $needcurve = get_sub_field('need_curve');
         $curve_type = get_sub_field('curve_type')
         ? get_sub_field('curve_type')
         : 'none';
