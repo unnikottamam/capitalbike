@@ -50,6 +50,16 @@ function my_acf_init_block_types()
     ]);
 
     acf_register_block_type([
+      'name' => 'content-plus-side-image',
+      'title' => __('Content + Side Image Carousel'),
+      'description' => __('Content + Side Image Carousel.'),
+      'render_template' => 'template-parts/blocks/content_plus_side_imageslider.php',
+      'category' => 'layout ',
+      'icon' => 'format-image',
+      'keywords' => ['content-plus-side-image'],
+    ]);
+
+    acf_register_block_type([
       'name' => 'thumbnail-cta-section',
       'title' => __('Thumbnail CTA Section'),
       'description' => __('Thumbnail CTA Section.'),
